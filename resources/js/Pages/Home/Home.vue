@@ -11,9 +11,9 @@ defineProps({
 </script>
 
 <template>
-    <AmbiauthenicatedLayout :canLogin="canLogin">
+    <AmbiauthenicatedLayout>
 
+        huh
     </AmbiauthenicatedLayout>
 
-    huh
 </template>

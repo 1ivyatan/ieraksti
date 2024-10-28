@@ -17,10 +17,9 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return Inertia::render('Home/Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
+        'canLogin' => Route::has('login')
     ]);
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
