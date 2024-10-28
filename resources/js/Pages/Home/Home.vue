@@ -12,7 +12,7 @@ defineProps({
 
 <template>
     <AmbiauthenicatedLayout>
-
+        <SidebarSearch />
         huh
     </AmbiauthenicatedLayout>
 
