@@ -1,19 +1,12 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
+import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-
-defineProps({
-    canLogin: {
-        type: Boolean,
-    }
-});
 </script>
 
 <template>
-    <AmbiauthenicatedLayout>
-        <SidebarSearch />
+    <WithSidebarSearchLayout>
         huh
-    </AmbiauthenicatedLayout>
+    </WithSidebarSearchLayout>
 
 </template>

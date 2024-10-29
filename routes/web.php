@@ -21,12 +21,6 @@ Route::get('/home', function () {
     ]);
 })->name('home');
 
-Route::get('/search', function () {
-    return Inertia::render('Search/Search', [
-        'canLogin' => Route::has('login')
-    ]);
-})->name('search');
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

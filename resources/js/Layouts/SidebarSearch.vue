@@ -5,8 +5,11 @@ import TextInput from '@/Components/TextInput.vue';
 </script>
 
 <template>
+asdasd
 
-
-
-sdfsdf
+<TextInput
+    type="text"
+    class="mt-1 block w-full"
+    autofocus
+/>
 </template>
