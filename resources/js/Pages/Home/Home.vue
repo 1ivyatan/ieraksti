@@ -8,5 +8,4 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
     <WithSidebarSearchLayout>
         huh
     </WithSidebarSearchLayout>
-
 </template>

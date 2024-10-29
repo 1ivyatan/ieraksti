@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
+import SidebarSearch from '@/Layouts/SidebarSearch.vue';
 </script>
 
 <template>
