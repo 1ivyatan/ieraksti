@@ -7,10 +7,10 @@ import SidebarSearch from '@/Layouts/SidebarSearch.vue';
 <template>
     <AmbiauthenicatedLayout>
         <div class="flex flex-wrap-reverse">
-            <div>
+            <div class="max-w-64">
                 <SidebarSearch />
             </div>
-            <div>
+            <div class="basis-3/5">
                 <slot />
             </div>
         </div>

@@ -17,6 +17,8 @@ defineProps({
 </script>
 
 <template>
+    <Head title="Profile" />
+
     <AmbiauthenicatedLayout>
         <template #header>
             <h2
