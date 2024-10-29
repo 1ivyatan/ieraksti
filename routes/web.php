@@ -16,13 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return Inertia::render('Home/Home', [
-        'canLogin' => Route::has('login')
-    ]);
+    return Inertia::render('Home/Home');
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::to_route("home");
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
