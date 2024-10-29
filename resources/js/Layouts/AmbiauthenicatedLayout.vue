@@ -12,7 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen">
+        <div class="min-h-screen bg-gray-100">
             <nav
                 class="border-b border-gray-100 bg-white"
             >
@@ -27,13 +27,10 @@ const showingNavigationDropdown = ref(false);
                                         class="block h-9 w-auto fill-current text-gray-800"
                                     />
                                 </Link>
-                                
                             </div>
                         </div>
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center">
-
-
                             <!-- Settings Dropdown -->
                             <div class="relative ms-3">
                                 <Dropdown align="right" width="48">
@@ -211,7 +208,9 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main class="bg-gray-100">
+            <main
+                class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+            >
                 <slot />
             </main>
 
