@@ -14,4 +14,16 @@ class ContentController extends Controller
     {
         return Inertia::render('ContentManager/Upload');
     }
+
+    /* display upload */
+    public function store(Request $request): Response
+    {
+        dd($request);
+        //$validated = $request->validate([
+        //    "name" => "required|string|max:255",
+        //    "cover" => "required|image|"
+        //]);
+
+        //$validated["cover"] = $request->file("cover")->store("covers");
+    }
 }
