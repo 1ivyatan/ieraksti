@@ -18,7 +18,7 @@ class ContentController extends Controller
     /* display upload */
     public function store(Request $request): Response
     {
-        dd($request);
+        dd($request->all());
         //$validated = $request->validate([
         //    "name" => "required|string|max:255",
         //    "cover" => "required|image|"
