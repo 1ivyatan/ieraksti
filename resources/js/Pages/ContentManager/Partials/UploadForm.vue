@@ -6,10 +6,9 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
 const uploadContent = () => {
-    form.post(route("content.upload"), {
-        
+    form.post("/upload", {
+     // alert("g");
     });
-    alert("d");
 };
 
 </script>
@@ -18,9 +17,10 @@ const uploadContent = () => {
     <form
         class="mt-6 space-y-6"
         enctype="multipart/form-data"
-        @submit.prevent="uploadContent"
         method="post"
+        @submit.prevent="uploadContent"
     >
+        
         <div>
             <InputLabel for="title" value="Title" />
 
@@ -47,7 +47,6 @@ const uploadContent = () => {
 
         <div class="flex items-center gap-4">
             <PrimaryButton
-                @click="uploadContent"
             >Upload</PrimaryButton>
         </div>
     </form>
