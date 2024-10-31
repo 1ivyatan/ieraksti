@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('music', function (Blueprint $table) {
             $table->id()->autoIncrement();
             
-            $table->foreignId('uploader_id')->constrained(
+            $table->foreignId('uploader_id')->nullable()->constrained(
                 table: "users", indexName: "id"
-            )->nullable()->nullOnDelete();
+            )->nullOnDelete();
 
             $table->string("title", length: 255);
+
+            $table->text("cover");
 
             $table->timestamps();
         });

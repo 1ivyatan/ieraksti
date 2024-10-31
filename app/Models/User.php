@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Enums\UserType;
 
+use App\Models\Music;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -50,5 +52,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /* music */
+    public function music(): HasMany {
+        return $this->hasMany(Music::class);
     }
 }

@@ -38,7 +38,6 @@ const uploadContent = () => {
                 id="cover"
                 type="file"
                 class="mt-1 block w-full"
-                required
                 @input="form.cover = $event.target.files[0]" 
             />
 
