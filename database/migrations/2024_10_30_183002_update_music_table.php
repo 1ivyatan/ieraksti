@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('music', function (Blueprint $table) {
-            $table->dropColumnIf("file");
-            $table->dropColumnIf("cover");
+            $table->dropColumn("file");
+            $table->dropColumn("cover");
         });
     }
 };

@@ -16,7 +16,7 @@ return new class extends Migration
             
             $table->foreignId('uploader_id')->constrained(
                 table: "users", indexName: "id"
-            );
+            )->nullable()->nullOnDelete();
 
             $table->string("title", length: 255);
 
