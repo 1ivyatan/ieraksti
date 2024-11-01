@@ -14,10 +14,13 @@ use App\Models\Music;
 class MusicController extends Controller
 {
     /* display track */
-    public function show(Request $request): Response
+    public function show(String $id): Response
     {
-        //dd($request);
-        return Inertia::render('Content/Music/Show');
+        $music = Music::findOrFail($id);
+        //dd($music);
+        return Inertia::render('Content/Music/Show', [
+            "music" => $music
+        ]);
     }
 
     /* display upload */

@@ -1,6 +1,11 @@
 <script setup>
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
 
+defineProps({
+    music: {
+        type: Object,
+    },
+});
 </script>
 
 <template>
@@ -9,6 +14,9 @@ import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
     <AmbiauthenicatedLayout>
         <section>
             hello
+            <pre>
+                {{ music }}
+            </pre>
         </section>
         
     </AmbiauthenicatedLayout>
