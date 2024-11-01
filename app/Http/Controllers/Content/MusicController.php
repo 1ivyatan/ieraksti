@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Content;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class MusicController extends Controller
     /* display upload */
     public function upload(Request $request): Response
     {
-        return Inertia::render('ContentManager/Upload');
+        return Inertia::render('Content/Music/Upload');
     }
 
     /* upload */
