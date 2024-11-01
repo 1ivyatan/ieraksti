@@ -16,7 +16,8 @@ class MusicController extends Controller
     /* display track */
     public function show(Request $request): Response
     {
-        dd($request);
+        //dd($request);
+        return Inertia::render('Content/Music/Show');
     }
 
     /* display upload */
