@@ -1,6 +1,6 @@
 <script setup>
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
-import UploadForm from './Partials/UploadForm.vue';
+import UploadForm from './Partials/CreateForm.vue';
 
 </script>
 

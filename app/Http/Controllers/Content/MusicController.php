@@ -13,8 +13,14 @@ use App\Models\Music;
 
 class MusicController extends Controller
 {
+    /* display track */
+    public function show(Request $request): Response
+    {
+        dd($request);
+    }
+
     /* display upload */
-    public function upload(Request $request): Response
+    public function create(Request $request): Response
     {
         return Inertia::render('Content/Music/Upload');
     }
@@ -35,11 +41,5 @@ class MusicController extends Controller
         $track = Music::create($validated);
 
         dd($request->all());
-        //$validated = $request->validate([
-        //    "name" => "required|string|max:255",
-        //    "cover" => "required|image|"
-        //]);
-
-        //$validated["cover"] = $request->file("cover")->store("covers");
     }
 }
