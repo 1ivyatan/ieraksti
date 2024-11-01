@@ -23,7 +23,7 @@ class MusicController extends Controller
     /* display upload */
     public function create(Request $request): Response
     {
-        return Inertia::render('Content/Music/Upload');
+        return Inertia::render('Content/Music/Create');
     }
 
     /* upload */
@@ -34,13 +34,10 @@ class MusicController extends Controller
             "title" => "required|string|max:255",
             "cover" => "image"
         ]);
-        
-        $validated['uploader_id'] = auth()->id();
 
         $validated["cover"] = $request->file("cover")->store("covers");
         
-        $track = Music::create($validated);
-
+        auth()->user()->music()->create($validated);
         dd($request->all());
     }
 }

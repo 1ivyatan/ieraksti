@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Enums\UserType;
 
@@ -56,6 +57,6 @@ class User extends Authenticatable
 
     /* music */
     public function music(): HasMany {
-        return $this->hasMany(Music::class);
+        return $this->hasMany(Music::class, "uploader_id");
     }
 }

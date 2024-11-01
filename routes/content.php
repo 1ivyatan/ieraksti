@@ -5,8 +5,7 @@ use App\Http\Controllers\Content\MusicController;
 /* guests */
 Route::middleware('guest')->group(function () {
     /* music */
-    Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');;
-    
+    Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
 });
 
 /* only authorized */
