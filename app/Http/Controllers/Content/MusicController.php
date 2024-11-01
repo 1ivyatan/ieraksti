@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,13 @@ class MusicController extends Controller
     /* display track */
     public function show(String $id): Response
     {
+        /* find music */
         $music = Music::findOrFail($id);
-        //dd($music);
+
+        /* getting files */
+        $music->cover = Storage::url($music->cover);
+
+       // dd($music->cover);
         return Inertia::render('Content/Music/Show', [
             "music" => $music
         ]);
@@ -38,9 +44,10 @@ class MusicController extends Controller
             "cover" => "image"
         ]);
 
-        $validated["cover"] = $request->file("cover")->store("covers");
-        
+        /* storing */
+        $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
         auth()->user()->music()->create($validated);
-        dd($request->all());
+
+        dd($validated);
     }
 }

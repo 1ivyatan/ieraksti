@@ -24,6 +24,7 @@ const uploadContent = () => {
     <form
         class="mt-6 space-y-6"
         @submit.prevent="uploadContent"
+        enctype="multipart/form-data"
     >
             <TextInput
                 id="title"

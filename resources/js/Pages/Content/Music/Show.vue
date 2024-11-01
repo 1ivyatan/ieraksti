@@ -14,6 +14,7 @@ defineProps({
     <AmbiauthenicatedLayout>
         <section>
             hello
+            <img :src="music.cover"/>
             <pre>
                 {{ music }}
             </pre>
