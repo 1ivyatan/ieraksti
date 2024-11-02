@@ -24,7 +24,7 @@ class MusicController extends Controller
         $music->cover = Storage::url($music->cover);
 
        // dd($music->cover);
-        return Inertia::render('Content/Music/Show', [
+        return Inertia::render('Content/Music/Show/Show', [
             "music" => $music
         ]);
     }
@@ -32,7 +32,7 @@ class MusicController extends Controller
     /* display upload */
     public function create(Request $request): Response
     {
-        return Inertia::render('Content/Music/Create');
+        return Inertia::render('Content/Music/Create/Create');
     }
 
     /* upload */
