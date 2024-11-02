@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -20,10 +21,8 @@ class MusicController extends Controller
 
         if ($music->cover) {
             $music->cover = Storage::url($music->cover);
-        } else {
-            $music->cover = "/assets/track.png";
         }
-        
+
         return $music;
     }
 
@@ -31,6 +30,10 @@ class MusicController extends Controller
     public function show(String $id): Response
     {
         $music = $this->getMusic($id);
+
+        if (!$music->cover) {
+            $music->cover = Config::get("styling.coverimage");
+        }
 
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $music
@@ -56,7 +59,6 @@ class MusicController extends Controller
     /* upload */
     public function store(Request $request): Response
     {
-
         /* input validation */
         $validated = $request->validate([
             "title" => "required|string|max:255",

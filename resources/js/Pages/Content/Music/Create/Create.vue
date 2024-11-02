@@ -2,9 +2,11 @@
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
 import InputError from '@/Components/Input/InputError.vue';
 import InputLabel from '@/Components/Input/InputLabel.vue';
+import MusicCover from '@/Components/Music/MusicCover.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import TextInput from '@/Components/Input/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import DangerButton from '@/Components/Button/DangerButton.vue';
 
 const props = defineProps({
     music: {
@@ -18,9 +20,9 @@ const form = useForm({
 });
 
 const recordContent = () => {
-    if (music) {
-        
-    } else {
+    if (props.music) { // edit
+        alert("edit");
+    } else {            // upload
         form.post("/upload", {});
     }
 }
@@ -56,12 +58,20 @@ const title = (props.music) ? `Edit '${props.music.title}''` : "Upload";
 
                 />
 
-                <input
-                    id="cover"
-                    type="file"
-                    class="mt-1 block w-full"
-                    @input="form.cover = $event.target.files[0]" 
-                />
+                <div>
+                    <div v-if="music && music.cover">
+                        <MusicCover :src="music.cover"/>
+                        <DangerButton>
+                            Remove cover
+                        </DangerButton>
+                    </div>
+                    <input
+                        id="cover"
+                        type="file"
+                        class="mt-1 block w-full"
+                        @input="form.cover = $event.target.files[0]" 
+                    />
+                </div>
 
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
                     {{ form.progress.percentage }}
