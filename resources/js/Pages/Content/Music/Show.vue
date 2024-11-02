@@ -1,5 +1,6 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
+import MusicCard from '@/Components/MusicViewCard.vue';
 
 defineProps({
     music: {
@@ -13,8 +14,7 @@ defineProps({
 
     <WithSidebarSearchLayout>
         <section>
-            hello
-            <img :src="music.cover"/>
+            <MusicCard :track="music"/>
             <p>
                 {{ music }}
             </p>
