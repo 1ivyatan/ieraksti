@@ -2,8 +2,9 @@
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import DeleteForm from './Partials/DeleteForm.vue';
+import { Head } from '@inertiajs/vue3';
 
-defineProps({
+const props = defineProps({
     music: {
         type: Object,
     },
@@ -15,7 +16,7 @@ const editMusic = () => {
 </script>
 
 <template>
-    <Head title="Upload" />
+    <Head :title="props.music.title" />
 
     <WithSidebarSearchLayout>
         <section>
@@ -27,7 +28,7 @@ const editMusic = () => {
                     <h2>{{ music.title }}</h2>
                 </div>
             </div>
-            <div v-if="$page.props.auth.user.id == music.uploader_id">
+            <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
                 <PrimaryButton @click="editMusic">Upload</PrimaryButton>
                 <DeleteForm>Delete</DeleteForm>
             </div>

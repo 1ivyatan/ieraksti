@@ -8,6 +8,9 @@ Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music
 
 /* -- only authorized */
 Route::middleware('auth')->group(function () {
-    Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');;
+    /* music */
+
+    Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');
+    Route::get("/track/{id}/edit", [MusicController::class, "edit"])->name('content.music.edit');
     Route::post("/upload", [MusicController::class, "store"])->name('content.music.upload');
 });

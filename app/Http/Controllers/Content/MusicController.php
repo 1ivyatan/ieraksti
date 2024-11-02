@@ -35,6 +35,19 @@ class MusicController extends Controller
         return Inertia::render('Content/Music/Create/Create');
     }
 
+    public function edit(Request $request, String $id): Response
+    {
+        /* find music */
+        $music = Music::findOrFail($id);
+
+        /* getting files */
+        $music->cover = Storage::url($music->cover);
+
+        return Inertia::render('Content/Music/Create/Create', [
+            "music" => $music
+        ]);
+    }
+
     /* upload */
     public function store(Request $request): Response
     {

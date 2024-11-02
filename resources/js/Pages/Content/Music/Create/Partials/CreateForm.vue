@@ -12,15 +12,12 @@ const form = useForm({
 
 const uploadContent = () => {
     form.post("/upload", {
-    //  alert("g");
     });
 };
 
 </script>
 
 <template>
-    <Head title="Upload" />
-
     <form
         class="mt-6 space-y-6"
         @submit.prevent="uploadContent"
