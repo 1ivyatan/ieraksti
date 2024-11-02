@@ -1,7 +1,7 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import DangerButton from '@/Components/Button/DangerButton.vue';
+import DeleteForm from './Partials/DeleteForm.vue';
 
 defineProps({
     music: {
@@ -25,7 +25,7 @@ defineProps({
             </div>
             <div>
                 <PrimaryButton>Upload</PrimaryButton>
-                <DangerButton>Delete</DangerButton>
+                <DeleteForm>Delete</DeleteForm>
             </div>
             <p>
                 {{ music }}
