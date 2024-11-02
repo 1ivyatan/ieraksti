@@ -17,7 +17,13 @@ class MusicController extends Controller
     /* get track */
     private function getMusic(String $id) {
         $music = Music::findOrFail($id);
-        $music->cover = Storage::url($music->cover);
+
+        if ($music->cover) {
+            $music->cover = Storage::url($music->cover);
+        } else {
+            $music->cover = "/assets/track.png";
+        }
+        
         return $music;
     }
 
@@ -50,14 +56,18 @@ class MusicController extends Controller
     /* upload */
     public function store(Request $request): Response
     {
+
         /* input validation */
         $validated = $request->validate([
             "title" => "required|string|max:255",
-            "cover" => "image"
+            "cover" => "nullable|image"
         ]);
 
         /* storing */
-        $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
+        if ($validated["cover"]) {
+            $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
+        }
+        
         auth()->user()->music()->create($validated);
 
         dd($validated);
