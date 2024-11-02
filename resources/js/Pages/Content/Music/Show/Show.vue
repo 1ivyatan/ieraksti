@@ -8,6 +8,10 @@ defineProps({
         type: Object,
     },
 });
+
+const editMusic = () => {
+    alert("hi!");
+}
 </script>
 
 <template>
@@ -23,8 +27,8 @@ defineProps({
                     <h2>{{ music.title }}</h2>
                 </div>
             </div>
-            <div>
-                <PrimaryButton>Upload</PrimaryButton>
+            <div v-if="$page.props.auth.user.id == music.uploader_id">
+                <PrimaryButton @click="editMusic">Upload</PrimaryButton>
                 <DeleteForm>Delete</DeleteForm>
             </div>
             <p>
