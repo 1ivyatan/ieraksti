@@ -10,7 +10,7 @@ import SidebarSearch from '@/Layouts/SidebarSearch.vue';
             <div class="max-w-64">
                 <SidebarSearch />
             </div>
-            <div class="basis-3/5">
+            <div class="basis-4/6">
                 <slot />
             </div>
         </div>

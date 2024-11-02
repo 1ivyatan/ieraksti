@@ -1,5 +1,5 @@
 <script setup>
-import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
+import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 
 defineProps({
     music: {
@@ -11,14 +11,14 @@ defineProps({
 <template>
     <Head title="Upload" />
 
-    <AmbiauthenicatedLayout>
+    <WithSidebarSearchLayout>
         <section>
             hello
             <img :src="music.cover"/>
-            <pre>
+            <p>
                 {{ music }}
-            </pre>
+            </p>
         </section>
         
-    </AmbiauthenicatedLayout>
+    </WithSidebarSearchLayout>
 </template>
