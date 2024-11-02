@@ -14,16 +14,18 @@ use App\Models\Music;
 
 class MusicController extends Controller
 {
+    /* get track */
+    private function getMusic(String $id) {
+        $music = Music::findOrFail($id);
+        $music->cover = Storage::url($music->cover);
+        return $music;
+    }
+
     /* display track */
     public function show(String $id): Response
     {
-        /* find music */
-        $music = Music::findOrFail($id);
+        $music = $this->getMusic($id);
 
-        /* getting files */
-        $music->cover = Storage::url($music->cover);
-
-       // dd($music->cover);
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $music
         ]);
@@ -35,13 +37,10 @@ class MusicController extends Controller
         return Inertia::render('Content/Music/Create/Create');
     }
 
+    /* display edit */
     public function edit(Request $request, String $id): Response
     {
-        /* find music */
-        $music = Music::findOrFail($id);
-
-        /* getting files */
-        $music->cover = Storage::url($music->cover);
+        $music = $this->getMusic($id);
 
         return Inertia::render('Content/Music/Create/Create', [
             "music" => $music
