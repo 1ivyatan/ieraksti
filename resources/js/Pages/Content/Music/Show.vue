@@ -1,6 +1,6 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
-import MusicCard from '@/Components/MusicViewCard.vue';
+import MusicCard from '@/Components/Music/MusicViewCard.vue';
 
 defineProps({
     music: {
