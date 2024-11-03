@@ -21,6 +21,8 @@ class MusicController extends Controller
 
         if ($music->cover) {
             $music->cover = Storage::url($music->cover);
+        } else {
+            $music->cover = Config::get("styling.coverimage");
         }
 
         return $music;
@@ -30,10 +32,6 @@ class MusicController extends Controller
     public function show(String $id): Response
     {
         $music = $this->getMusic($id);
-
-        if (!$music->cover) {
-            $music->cover = Config::get("styling.coverimage");
-        }
 
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $music
@@ -51,7 +49,7 @@ class MusicController extends Controller
     {
         $music = $this->getMusic($id);
 
-        return Inertia::render('Content/Music/Create/Create', [
+        return Inertia::render('Content/Music/Edit/Edit', [
             "music" => $music
         ]);
     }
@@ -72,6 +70,6 @@ class MusicController extends Controller
         
         auth()->user()->music()->create($validated);
 
-        dd($validated);
+        dd($validated); /////////
     }
 }
