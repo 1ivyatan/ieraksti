@@ -1,8 +1,9 @@
 <script setup>
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
+import BasicInformation from './Partials/UpdateInformation.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
-defineProps({
+const props = defineProps({
     music: {
         type: Object,
     }
@@ -21,6 +22,12 @@ defineProps({
                 Edit "{{ music.title }}"
             </h2>
         </template>
+
+        <section>
+            <BasicInformation 
+                :title="props.music.title"
+            />
+        </section>
 
     </AmbiauthenicatedLayout>
 </template>
