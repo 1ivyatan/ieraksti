@@ -26,6 +26,7 @@ const props = defineProps({
         <section>
             <BasicInformation 
                 :title="props.music.title"
+                :id="props.music.id"
             />
         </section>
 

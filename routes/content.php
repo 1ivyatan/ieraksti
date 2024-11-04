@@ -14,4 +14,5 @@ Route::middleware('auth')->group(function () {
     Route::post("/upload", [MusicController::class, "store"])->name('content.music.upload');
 
     Route::get("/track/{id}/edit", [MusicController::class, "edit"])->name('content.music.edit');
+    Route::put("/track/{id}", [MusicController::class, "update"])->name('content.music.update');
 });

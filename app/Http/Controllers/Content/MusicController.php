@@ -72,4 +72,9 @@ class MusicController extends Controller
 
         dd($validated); /////////
     }
+
+    public function update(Request $request, String $id): Response
+    {
+        dd($request);
+    }
 }

@@ -17,7 +17,7 @@ const form = useForm({
 });
 
 const recordContent = () => {
-    form.post("/upload", {});
+    form.post(route("content.music.upload"), {});
 }
 
 </script>
