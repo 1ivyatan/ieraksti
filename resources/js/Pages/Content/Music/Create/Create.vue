@@ -11,11 +11,10 @@ import DangerButton from '@/Components/Button/DangerButton.vue';
 
 const hasCover = ref(false);
 
-let form = useForm({
+const form = useForm({
     title: "",
     cover: null,
 });
-
 
 const recordContent = () => {
     form.post("/upload", {});
