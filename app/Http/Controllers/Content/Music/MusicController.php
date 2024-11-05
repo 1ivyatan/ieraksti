@@ -13,7 +13,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 
 use App\Models\Music;
-use App\Enums\UserType;
 
 class MusicController extends Controller
 {
