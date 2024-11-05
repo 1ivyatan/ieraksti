@@ -1,7 +1,15 @@
 <script setup>
 import DangerButton from '@/Components/Button/DangerButton.vue';
 import Modal from '@/Components/Other/Modal.vue';
+import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
+
+const props = defineProps({
+    id: {
+        type: String,
+        required: true
+    }
+});
 
 const confirmTrackDeletionDialog = ref(false);
 
@@ -14,7 +22,10 @@ const closeModal = () => {
 };
 
 const deleteTrack = () => {
-    alert("ff");
+    alert(props.id);
+    router.delete(route('content.music.destroy', {
+        id: props.id
+    }));
 }
 </script>
 

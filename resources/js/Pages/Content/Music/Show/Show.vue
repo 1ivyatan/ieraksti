@@ -21,6 +21,7 @@ const editMusic = () => {
 
     <WithSidebarSearchLayout>
         <section>
+
             <div class="flex">
                 <div>
                     <img :src="music.cover" class="w-64" />
@@ -29,10 +30,12 @@ const editMusic = () => {
                     <h2>{{ music.title }}</h2>
                 </div>
             </div>
+            
             <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
                 <PrimaryButton @click="editMusic">Upload</PrimaryButton>
-                <DeleteMusicForm />
+                <DeleteMusicForm :id="props.music.id"/>
             </div>
+            
             <p>
                 {{ music }}
             </p>

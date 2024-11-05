@@ -19,20 +19,18 @@ class MusicController extends Controller
     private function find(String $id) {
         $track = Music::findOrFail($id);
 
-        if ($track) {
-            if ($track->cover) {
-                $track->cover = Storage::url($music->cover);
-            } else {
-                $track->cover = Config::get("styling.coverimage");
-            }
-        } else $track = null;
-
         return $track;
     }
 
     public function show(Request $request, String $id): Response
     {
         $track = $this->find($id);
+
+        if ($track->cover) {
+            $track->cover = Storage::url($music->cover);
+        } else {
+            $track->cover = Config::get("styling.coverimage");
+        }
 
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $track
@@ -65,6 +63,10 @@ class MusicController extends Controller
     public function destroy(Request $request, String $id): RedirectResponse
     {
         $track = Music::findOrFail($id);
+
+        if ($track->cover) {
+            $track->cover = Storage::delete($music->cover);
+        }
 
         $track->delete();
 
