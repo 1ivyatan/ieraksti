@@ -16,9 +16,27 @@ use App\Models\Music;
 
 class MusicController extends Controller
 {
+    private function find(String $id) {
+        $track = Music::findOrFail($id);
+
+        if ($track) {
+            if ($track->cover) {
+                $track->cover = Storage::url($music->cover);
+            } else {
+                $track->cover = Config::get("styling.coverimage");
+            }
+        } else $track = null;
+
+        return $track;
+    }
+
     public function show(Request $request, String $id): Response
     {
-        return Inertia::render('Content/Music/Show/Show');
+        $track = $this->find($id);
+
+        return Inertia::render('Content/Music/Show/Show', [
+            "music" => $track
+        ]);
     }
 
     public function create(Request $request): Response
@@ -42,5 +60,14 @@ class MusicController extends Controller
         return Redirect::route("content.music.show", [
             "id" => $track->id
         ]);
+    }
+
+    public function destroy(Request $request, String $id): RedirectResponse
+    {
+        $track = Music::findOrFail($id);
+
+        $track->delete();
+
+        return Redirect::route("home");
     }
 }

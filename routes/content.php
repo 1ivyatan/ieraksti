@@ -2,9 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Content\Music\MusicController;
 
-Route::middleware(['guest', 'auth'])->group(function () {
-    Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
-});
+Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
 
 Route::middleware('auth')->group(function () {
 

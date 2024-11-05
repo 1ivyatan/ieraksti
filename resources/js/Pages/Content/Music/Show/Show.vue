@@ -1,12 +1,13 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import DeleteForm from './Partials/DeleteForm.vue';
+import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
     music: {
         type: Object,
+        required: true,
     },
 });
 
@@ -30,7 +31,7 @@ const editMusic = () => {
             </div>
             <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
                 <PrimaryButton @click="editMusic">Upload</PrimaryButton>
-                <DeleteForm>Delete</DeleteForm>
+                <DeleteMusicForm />
             </div>
             <p>
                 {{ music }}
