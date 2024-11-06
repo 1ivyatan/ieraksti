@@ -1,5 +1,6 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
+import VertMusicCard from '@/Components/Music/VertMusicCard.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
 import { Head } from '@inertiajs/vue3';
@@ -21,11 +22,9 @@ const editMusic = () => {
 
     <WithSidebarSearchLayout>
         <section>
+            <VertMusicCard :music="props.music"/>
 
             <div class="flex">
-                <div>
-                    <img :src="music.cover" class="w-64" />
-                </div>
                 <div>
                     <h2>{{ music.title }}</h2>
                 </div>

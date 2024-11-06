@@ -209,9 +209,13 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Page Content -->
             <main
-                class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                class="py-6"
             >
-                <slot />
+                <div
+                    class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                >
+                    <slot />
+                </div>
             </main>
 
             <AudioPlayerBar></AudioPlayerBar>

@@ -2,7 +2,6 @@
 import AmbiauthenicatedLayout from '@/Layouts/AmbiauthenicatedLayout.vue';
 import InputError from '@/Components/Input/InputError.vue';
 import InputLabel from '@/Components/Input/InputLabel.vue';
-import MusicCover from '@/Components/Music/MusicCover.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import TextInput from '@/Components/Input/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
