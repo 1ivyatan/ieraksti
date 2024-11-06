@@ -17,7 +17,9 @@ const form = useForm({
 });
 
 const updateInformation = () => {
-    form.put("/track/" + props.id, {});
+    form.put(route("content.music.info.update", {
+        id: props.music.id
+    }));
 }
 
 </script>
