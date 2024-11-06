@@ -15,7 +15,9 @@ class MusicInfoController extends Controller
     {
         $track = MusicController::find($id);
 
-        dd($request);
+        $track->fill($request->validated());
+
+        $track->save();
 
         return Redirect::route('content.music.edit', [
             "id" => $id
