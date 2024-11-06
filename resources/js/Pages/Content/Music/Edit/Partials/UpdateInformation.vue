@@ -54,28 +54,4 @@ const updateInformation = () => {
             </progress>
         </form>
     </section>
-    <!--
-    <div>
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">
-                Track information
-            </h2>
-        </header>
-
-        <form
-            class="mt-6 space-y-6"
-            @submit.prevent="updateInformation"
-        >
-            <TextInput
-                id="title"
-                type="text"
-                class="mt-1 block w-full"
-                v-model="form.title"
-                required
-                autofocus
-            />
-
-            <PrimaryButton>Update</PrimaryButton>
-        </form>
-    </div>-->
 </template>
