@@ -27,7 +27,7 @@ class MusicController extends Controller
         $track = $this->find($id);
 
         if ($track->cover) {
-            $track->cover = Storage::url($music->cover);
+            $track->cover = Storage::url($track->cover);
         } else {
             $track->cover = Config::get("styling.coverimage");
         }
@@ -65,7 +65,7 @@ class MusicController extends Controller
         $track = Music::findOrFail($id);
 
         if ($track->cover) {
-            $track->cover = Storage::delete($music->cover);
+            $track->cover = Storage::delete($track->cover);
         }
 
         $track->delete();
