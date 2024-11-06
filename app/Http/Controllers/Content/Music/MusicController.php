@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Content\Music;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MusicUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -57,12 +58,9 @@ class MusicController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(MusicUpdateRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            "title" => "required|string|max:255",
-            "cover" => "nullable|image"
-        ]);
+        $validated = $request->validated();
 
         if ($validated["cover"]) {
             $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
