@@ -90,7 +90,6 @@ const hasCover = ref(false);
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
                     {{ form.progress.percentage }}
                 </progress>
-
             </form>
         </section>
     </AmbiauthenicatedLayout>

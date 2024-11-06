@@ -42,6 +42,21 @@ class MusicController extends Controller
         return Inertia::render('Content/Music/Create/Create');
     }
 
+    public function edit(Request $request, String $id): Response
+    {
+        $track = $this->find($id);
+
+        if ($track->cover) {
+            $track->cover = Storage::url($track->cover);
+        } else {
+            $track->cover = Config::get("styling.coverimage");
+        }
+
+        return Inertia::render('Content/Music/Edit/Edit', [
+            "music" => $track
+        ]);
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -62,7 +77,7 @@ class MusicController extends Controller
 
     public function destroy(Request $request, String $id): RedirectResponse
     {
-        $track = Music::findOrFail($id);
+        $track = $this->find($id);
 
         if ($track->cover) {
             $track->cover = Storage::delete($track->cover);

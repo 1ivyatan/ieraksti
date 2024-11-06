@@ -6,18 +6,14 @@ import TextInput from '@/Components/Input/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
-    id: {
-        type: String,
-        required: true
-    },
-    title: {
+    music: {
         type: String,
         required: true
     }
 });
 
 const form = useForm({
-    title: props.title,
+    title: props.music.title,
 });
 
 const updateInformation = () => {
@@ -27,6 +23,36 @@ const updateInformation = () => {
 </script>
 
 <template>
+    <section 
+        class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
+    >
+        <form
+            @submit.prevent="updateInformation"
+            enctype="multipart/form-data"
+        >
+            <div>
+                <InputLabel for="title" value="Title" />
+
+                <TextInput 
+                    id="title"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.title"
+                    required
+                    autofocus
+                />
+
+                <InputError class="mt-2" :message="form.errors.title" />
+            </div>
+
+            <PrimaryButton>Update</PrimaryButton>
+
+            <progress v-if="form.progress" :value="form.progress.percentage" max="100">
+                {{ form.progress.percentage }}
+            </progress>
+        </form>
+    </section>
+    <!--
     <div>
         <header>
             <h2 class="text-lg font-medium text-gray-900">
@@ -49,5 +75,5 @@ const updateInformation = () => {
 
             <PrimaryButton>Update</PrimaryButton>
         </form>
-    </div>
+    </div>-->
 </template>
