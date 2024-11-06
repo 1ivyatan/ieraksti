@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use App\Enums\UserType;
 
-class Unbanned
+class Privileged
 {
     /**
      * Handle an incoming request.

@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ])->alias([
-            "unbanned" => \App\Http\Middleware\Unbanned::class
+            "privileged" => \App\Http\Middleware\Privileged::class
         ]);
 
         //
