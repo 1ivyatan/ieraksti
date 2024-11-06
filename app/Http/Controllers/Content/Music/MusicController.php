@@ -16,7 +16,7 @@ use App\Models\Music;
 
 class MusicController extends Controller
 {
-    private function find(String $id) {
+    public static function find(String $id) {
         $track = Music::findOrFail($id);
 
         return $track;
