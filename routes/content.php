@@ -18,6 +18,6 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::get("/track/{id}/edit", [MusicController::class, "edit"])->name('content.music.edit');
     Route::put("track-info-update/{id}", [MusicInfoController::class, "update"])->name('content.music.info.update');
     
-    Route::put("track-cover-update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
+    Route::post("track-cover-update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
     Route::delete("track-cover-destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
 });

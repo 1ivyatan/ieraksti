@@ -2,10 +2,9 @@
 import InputError from '@/Components/Input/InputError.vue';
 import InputLabel from '@/Components/Input/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import TextInput from '@/Components/Input/TextInput.vue';
 import Cover from '@/Components/Music/Cover.vue';
 import Modal from '@/Components/Other/Modal.vue';
-import { useForm , usePage  } from '@inertiajs/vue3';
+import { useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import DangerButton from '@/Components/Button/DangerButton.vue';
 
@@ -17,11 +16,11 @@ const props = defineProps({
 });
 
 const form = useForm({
-    cover: null,
+    cover: null
 });
 
 const updateCover = () => {
-    form.put(route("content.music.cover.update", {
+    form.post(route("content.music.cover.update", {
         id: props.music.id
     }));
 }
@@ -62,15 +61,15 @@ const deleteCover = () => {
                     <Cover :src="props.music.cover"/>
                 </div>
                 <div>
-                    <TextInput 
-                        id="title"
+                    <input
+                        id="cover"
+                        ref="cover"
                         type="file"
                         class="mt-1 block w-full"
-                        v-model="form.title"
-                        required
-                        autofocus
+                        @input="
+                            form.cover = $event.target.files[0]
+                        " 
                     />
-
                     <InputError class="mt-2" :message="form.errors.cover" />
                 </div>
             </div>

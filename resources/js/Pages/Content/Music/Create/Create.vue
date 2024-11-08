@@ -61,6 +61,7 @@ const hasCover = ref(false);
                     <input
                         id="cover"
                         ref="cover"
+                        name="cover"
                         type="file"
                         class="mt-1 block w-full"
                         @input="
@@ -81,7 +82,7 @@ const hasCover = ref(false);
                         v-show="hasCover"
                     >
                         Remove
-                    </DangerButton>
+                    </DangerButton>-
 
                 </div>
 

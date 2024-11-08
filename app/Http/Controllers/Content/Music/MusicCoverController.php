@@ -5,16 +5,31 @@ namespace App\Http\Controllers\Content\Music;
 use App\Http\Controllers\Content\Music\MusicController;
 use App\Http\Requests\MusicUpdateRequest;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class MusicCoverController extends Controller
 {
-    public function update(MusicUpdateRequest $request, String $id): RedirectResponse
+    public function update(Request $request, String $id): RedirectResponse
     {
-        dd($request);
+        $track = MusicController::find($id);
+        $validated = $request->validate([
+            'cover' => 'nullable|image',
+        ]);
+
+        if ($validated["cover"]) {
+            $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
+        }
+
+        $track->fill($validated);
+
+        $track->save();
+
+
+        dd($validated);
     }
 
     public function destroy(Request $request, String $id): RedirectResponse

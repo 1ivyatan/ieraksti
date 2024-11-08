@@ -30,7 +30,6 @@ const updateInformation = () => {
     >
         <form
             @submit.prevent="updateInformation"
-            enctype="multipart/form-data"
         >
             <div>
                 <InputLabel for="title" value="Title" />
