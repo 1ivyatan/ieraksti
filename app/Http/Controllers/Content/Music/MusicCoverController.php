@@ -16,20 +16,23 @@ class MusicCoverController extends Controller
     public function update(Request $request, String $id): RedirectResponse
     {
         $track = MusicController::find($id);
+
+        if ($track->cover &&Storage::exists($track->cover)) {
+            Storage::delete($track->cover);
+        }
+
         $validated = $request->validate([
             'cover' => 'nullable|image',
         ]);
 
-        if ($validated["cover"]) {
-            $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
-        }
+        $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
 
         $track->fill($validated);
-
         $track->save();
 
-
-        dd($validated);
+        return Redirect::route('content.music.edit', [
+            "id" => $id
+        ]);
     }
 
     public function destroy(Request $request, String $id): RedirectResponse

@@ -64,6 +64,7 @@ const deleteCover = () => {
                     <input
                         id="cover"
                         ref="cover"
+                        name="cover"
                         type="file"
                         class="mt-1 block w-full"
                         @input="
