@@ -29,8 +29,6 @@ class MusicController extends Controller
 
         if ($track->cover) {
             $track->cover = Storage::url($track->cover);
-        } else {
-            $track->cover = Config::get("styling.coverimage");
         }
 
         return Inertia::render('Content/Music/Show/Show', [
@@ -49,8 +47,6 @@ class MusicController extends Controller
 
         if ($track->cover) {
             $track->cover = Storage::url($track->cover);
-        } else {
-            $track->cover = Config::get("styling.coverimage");
         }
 
         return Inertia::render('Content/Music/Edit/Edit', [

@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
 
 class MusicCoverController extends Controller
 {
-    public function update(Request $request, String $id): RedirectResponse
+    public function update(MusicUpdateRequest $request, String $id): RedirectResponse
+    {
+        dd($request);
+    }
+
+    public function destroy(Request $request, String $id): RedirectResponse
     {
         dd($request);
     }
