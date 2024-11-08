@@ -39,7 +39,8 @@ const closeModal = () => {
 
 const deleteCover = () => {
     form.delete(route("content.music.cover.destroy", {
-        id: props.music.id
+        id: props.music.id,
+        onSuccess: () => closeModal()
     }));
 }
 
@@ -79,6 +80,7 @@ const deleteCover = () => {
                 <DangerButton
                     type="button"
                     @click="confirmCoverDeletion"
+                    v-if="props.music.cover != null"
                 >Delete</DangerButton>
             </div>
 
