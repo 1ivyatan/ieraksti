@@ -13,11 +13,11 @@ const props = defineProps({
 });
 
 const form = useForm({
-    title: props.music.title,
+    cover: null,
 });
 
 const updateInformation = () => {
-    form.put(route("content.music.info.update", {
+    form.put(route("content.music.cover.update", {
         id: props.music.id
     }));
 }
@@ -33,18 +33,18 @@ const updateInformation = () => {
             enctype="multipart/form-data"
         >
             <div>
-                <InputLabel for="title" value="Title" />
+                <InputLabel for="cover" value="Cover" />
 
                 <TextInput 
                     id="title"
-                    type="text"
+                    type="file"
                     class="mt-1 block w-full"
                     v-model="form.title"
                     required
                     autofocus
                 />
 
-                <InputError class="mt-2" :message="form.errors.title" />
+                <InputError class="mt-2" :message="form.errors.cover" />
             </div>
 
             <PrimaryButton>Update</PrimaryButton>
