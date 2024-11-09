@@ -16,7 +16,7 @@ class MusicCreateRequest extends FormRequest
         return [
             "title" => "required|string|max:255",
             "cover" => "nullable|image",
-            "audio" => "required|file|mimes:mp3"
+            "audio" => "required|file|mimes:mp3|max:25600"
         ];
     }
 }
