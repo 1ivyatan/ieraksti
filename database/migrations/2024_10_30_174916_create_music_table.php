@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->text("cover")->nullable();
 
-            $table->text("audio");
+            $table->longText("audio", 26214400);
 
             $table->timestamps();
         });
