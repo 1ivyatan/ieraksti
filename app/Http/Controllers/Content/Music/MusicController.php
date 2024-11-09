@@ -24,7 +24,7 @@ class MusicController extends Controller
     }
 
     public static function findAndCoatIt(String $id) {
-        $track = $this->find($id);
+        $track = MusicController::find($id);
 
         if ($track->cover) {
             $track->cover = Storage::url($track->cover);
@@ -37,7 +37,7 @@ class MusicController extends Controller
 
     public function show(Request $request, String $id): Response
     {
-        $track = findAndCoatIt($id);
+        $track = $this->findAndCoatIt($id);
 
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $track
@@ -51,7 +51,7 @@ class MusicController extends Controller
 
     public function edit(Request $request, String $id): Response
     {
-        $track = findAndCoatIt($id);
+        $track = $this->findAndCoatIt($id);
 
         return Inertia::render('Content/Music/Edit/Edit', [
             "music" => $track

@@ -11,6 +11,7 @@ import DangerButton from '@/Components/Button/DangerButton.vue';
 const form = useForm({
     title: "",
     cover: null,
+    audio: null,
 });
 
 const recordContent = () => {
@@ -72,6 +73,7 @@ const hasCover = ref(false);
 
                     <InputError class="mt-2" :message="form.errors.cover" />
 
+                    <!--
                     <DangerButton 
                         @click="
                             form.cover = $refs.cover.value = null;
@@ -82,7 +84,39 @@ const hasCover = ref(false);
                         v-show="hasCover"
                     >
                         Remove
-                    </DangerButton>-
+                    </DangerButton>-->
+
+                </div>
+
+                <!-- audio -->
+                <div>
+                    <InputLabel for="audio" value="Audio" />
+
+                    <input
+                        id="audio"
+                        ref="audio"
+                        name="audio"
+                        type="file"
+                        class="mt-1 block w-full"
+                        @input="
+                            form.audio = $event.target.files[0]
+                        " 
+                    />
+
+                    <InputError class="mt-2" :message="form.errors.audio" />
+
+                    <!--
+                    <DangerButton 
+                        @click="
+                            form.cover = $refs.cover.value = null;
+                            hasCover = false
+                        "
+                        type="button"
+                        id="albumremove"
+                        v-show="hasCover"
+                    >
+                        Remove
+                    </DangerButton>-->
 
                 </div>
 
