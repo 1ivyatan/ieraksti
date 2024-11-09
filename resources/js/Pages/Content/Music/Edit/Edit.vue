@@ -20,25 +20,4 @@ const props = defineProps({
         <UpdateCover :music="props.music" />
         {{ props.music }}
     </AmbiauthenicatedLayout>
-
-    <!--
-    <Head :title="'Edit \'' + music.title + '\''" />
-
-    <AmbiauthenicatedLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Edit "{{ music.title }}"
-            </h2>
-        </template>
-
-        <section>
-            <BasicInformation 
-                :title="props.music.title"
-                :id="props.music.id"
-            />
-        </section>
-
-    </AmbiauthenicatedLayout>-->
 </template>
