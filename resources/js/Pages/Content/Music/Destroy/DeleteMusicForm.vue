@@ -22,7 +22,6 @@ const closeModal = () => {
 };
 
 const deleteTrack = () => {
-    alert(props.id);
     router.delete(route('content.music.destroy', {
         id: props.id,
         onSuccess: () => closeModal()
