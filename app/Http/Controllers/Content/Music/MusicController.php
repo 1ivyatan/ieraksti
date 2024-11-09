@@ -23,13 +23,21 @@ class MusicController extends Controller
         return $track;
     }
 
-    public function show(Request $request, String $id): Response
-    {
+    public static function findAndCoatIt(String $id) {
         $track = $this->find($id);
 
         if ($track->cover) {
             $track->cover = Storage::url($track->cover);
         }
+
+        $track->audio = Storage::url($track->audio);
+
+        return $track;
+    }
+
+    public function show(Request $request, String $id): Response
+    {
+        $track = findAndCoatIt($id);
 
         return Inertia::render('Content/Music/Show/Show', [
             "music" => $track
@@ -43,11 +51,7 @@ class MusicController extends Controller
 
     public function edit(Request $request, String $id): Response
     {
-        $track = $this->find($id);
-
-        if ($track->cover) {
-            $track->cover = Storage::url($track->cover);
-        }
+        $track = findAndCoatIt($id);
 
         return Inertia::render('Content/Music/Edit/Edit', [
             "music" => $track
@@ -61,6 +65,8 @@ class MusicController extends Controller
         if ($validated["cover"]) {
             $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
         }
+
+        $validated["audio"] = Storage::putFile("audio", $request->file("audio"));
         
         $track = auth()->user()->music()->create($validated);
 
@@ -76,6 +82,8 @@ class MusicController extends Controller
         if ($track->cover) {
             $track->cover = Storage::delete($track->cover);
         }
+
+        $track->audio = Storage::delete($track->audio);
 
         $track->delete();
 
