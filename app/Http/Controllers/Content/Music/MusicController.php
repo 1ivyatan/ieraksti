@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Content\Music;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MusicUpdateRequest;
+use App\Http\Requests\Content\MusicCreateRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -54,7 +54,7 @@ class MusicController extends Controller
         ]);
     }
 
-    public function store(MusicUpdateRequest $request): RedirectResponse
+    public function store(MusicCreateRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
