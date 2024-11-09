@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Content\Music\MusicController;
 use App\Http\Controllers\Content\Music\MusicInfoController;
 use App\Http\Controllers\Content\Music\MusicCoverController;
+use App\Http\Controllers\Content\Music\MusicAudioController;
 
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
 
@@ -19,5 +20,6 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::put("track-info-update/{id}", [MusicInfoController::class, "update"])->name('content.music.info.update');
     
     Route::post("track-cover-update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
+    Route::post("track-audio-update/{id}", [MusicAudioController::class, "update"])->name("content.music.audio.update");
     Route::delete("track-cover-destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
 });

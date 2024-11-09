@@ -17,8 +17,6 @@ const form = useForm({
 const recordContent = () => {
     form.post(route("content.music.upload"));
 }
-
-const hasCover = ref(false);
 </script>
 
 <template>
@@ -66,25 +64,11 @@ const hasCover = ref(false);
                         type="file"
                         class="mt-1 block w-full"
                         @input="
-                            hasCover = true;
                             form.cover = $event.target.files[0]
                         " 
                     />
 
                     <InputError class="mt-2" :message="form.errors.cover" />
-
-                    <!--
-                    <DangerButton 
-                        @click="
-                            form.cover = $refs.cover.value = null;
-                            hasCover = false
-                        "
-                        type="button"
-                        id="albumremove"
-                        v-show="hasCover"
-                    >
-                        Remove
-                    </DangerButton>-->
 
                 </div>
 
@@ -104,20 +88,6 @@ const hasCover = ref(false);
                     />
 
                     <InputError class="mt-2" :message="form.errors.audio" />
-
-                    <!--
-                    <DangerButton 
-                        @click="
-                            form.cover = $refs.cover.value = null;
-                            hasCover = false
-                        "
-                        type="button"
-                        id="albumremove"
-                        v-show="hasCover"
-                    >
-                        Remove
-                    </DangerButton>-->
-
                 </div>
 
                 <PrimaryButton>Upload</PrimaryButton>
