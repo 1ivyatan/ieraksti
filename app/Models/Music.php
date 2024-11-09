@@ -15,6 +15,7 @@ class Music extends Model
     protected $fillable = [
         'title',
         'cover',
+        'audio',
     ];
 
     public function user(): BelongsTo

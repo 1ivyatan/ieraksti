@@ -22,10 +22,11 @@ return new class extends Migration
 
             $table->text("cover")->nullable();
 
+            $table->text("audio");
+
             $table->timestamps();
         });
 
-        
     }
 
     /**
