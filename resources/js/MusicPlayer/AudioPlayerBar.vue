@@ -14,5 +14,10 @@ import {store} from "./Player.js";
           {{ store.count }}
         </button>
         </div>
+
+        <audio controls>
+            <source src="https://upload.wikimedia.org/wikipedia/commons/5/5c/XC707075_-_European_Herring_Gull_-_Larus_argentatus.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio> 
     </div>
 </template>

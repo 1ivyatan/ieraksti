@@ -5,7 +5,7 @@ import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import NavLink from '@/Components/Navigation/NavLink.vue';
 import ResponsiveNavLink from '@/Components/Navigation/ResponsiveNavLink.vue';
-import AudioPlayerBar from '@/Layouts/MusicPlayer/AudioPlayerBar.vue';
+import AudioPlayerBar from '@/MusicPlayer/AudioPlayerBar.vue';
 import { Link } from '@inertiajs/vue3';
 const showingNavigationDropdown = ref(false);
 </script>
@@ -218,7 +218,7 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </main>
 
-            <AudioPlayerBar></AudioPlayerBar>
+            <AudioPlayerBar />
         </div>
     </div>
 </template>
