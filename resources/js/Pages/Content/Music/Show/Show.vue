@@ -3,7 +3,7 @@ import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import VertMusicCard from '@/Components/Music/VertMusicCard.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
-import ShowPlayButton from '@/MusicPlayer/Components/ShowPlayButton.vue';
+import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({

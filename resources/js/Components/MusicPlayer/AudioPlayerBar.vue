@@ -1,6 +1,10 @@
 <script setup>
 import {ref, watch, onMounted} from 'vue';
 import {store} from "./Player.js";
+import { useCounterStore } from '@/Stores/AudioPlayerStore'
+
+const counter = useCounterStore()
+
 </script>
 
 <template>
@@ -11,8 +15,8 @@ import {store} from "./Player.js";
             class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
 
-            <button @click="store.increment()">
-                {{ store.count }}
+            <button @click="counter.increment()">
+                {{ counter.count }}
             </button>
         
         </div>
