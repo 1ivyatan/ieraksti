@@ -10,9 +10,11 @@ import {store} from "./Player.js";
         <div
             class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-        <button @click="store.increment()">
-          {{ store.count }}
-        </button>
+
+            <button @click="store.increment()">
+                {{ store.count }}
+            </button>
+        
         </div>
 
         <audio controls>
