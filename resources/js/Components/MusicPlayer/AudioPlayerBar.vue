@@ -1,6 +1,5 @@
 <script setup>
 import {ref, watch, onMounted} from 'vue';
-import {store} from "./Player.js";
 import { useCounterStore } from '@/Stores/AudioPlayerStore'
 
 const counter = useCounterStore()
