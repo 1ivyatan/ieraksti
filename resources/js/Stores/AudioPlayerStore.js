@@ -12,3 +12,16 @@ export const useCounterStore = defineStore('counter', {
       },
     },
   })
+
+  export const useAudioUrlStore = defineStore('audiourl', {
+      state: () => {
+        return { audiourl: "" }
+      },
+      // could also be defined as
+      // state: () => ({ count: 0 })
+      actions: {
+        set(url) {
+          this.audiourl = url;
+        },
+      },
+    })

@@ -1,5 +1,11 @@
 <script setup>
 
+import AudioPlayerBar from '@/Components/MusicPlayer/AudioPlayerBar.vue';
+
+import { useAudioUrlStore } from '@/Stores/AudioPlayerStore'
+
+const audiourl = useAudioUrlStore();
+
 const props = defineProps({
     music: {
         type: Object,
@@ -8,7 +14,7 @@ const props = defineProps({
 });
 
 const playAudio = () => {
-    
+    audiourl.set(props.music.audio);
 }
 
 </script>

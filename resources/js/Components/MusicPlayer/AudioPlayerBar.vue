@@ -4,6 +4,11 @@ import { useCounterStore } from '@/Stores/AudioPlayerStore'
 
 const counter = useCounterStore()
 
+import { useAudioUrlStore } from '@/Stores/AudioPlayerStore'
+
+const audiourl = useAudioUrlStore();
+
+
 </script>
 
 <template>
@@ -17,11 +22,13 @@ const counter = useCounterStore()
             <button @click="counter.increment()">
                 {{ counter.count }}
             </button>
+
+            <p>{{ audiourl.audiourl }}</p>
         
         </div>
 
         <audio controls>
-            <source src="https://upload.wikimedia.org/wikipedia/commons/5/5c/XC707075_-_European_Herring_Gull_-_Larus_argentatus.mp3" type="audio/mpeg">
+            <source @src="audiourl.audiourl" type="audio/mpeg">
         Your browser does not support the audio element.
         </audio> 
     </div>
