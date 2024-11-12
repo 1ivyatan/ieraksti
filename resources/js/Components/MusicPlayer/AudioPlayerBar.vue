@@ -3,11 +3,15 @@ import {ref, watch, onMounted} from 'vue';
 import { useAudioPlayerStore } from '@/Stores/AudioPlayerStore'
 
 const audioPlayer = useAudioPlayerStore();
-const playerBarPresent = ref(false);
+const playerBarPresent = ref(true);
 
 onMounted(() => {
 
 });
+
+const startPlayer = () => {
+    console.log("ff");
+}
 
 </script>
 
@@ -19,7 +23,11 @@ onMounted(() => {
         <div
             class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-            {{ audioPlayer.audio }}
+            <h3>
+                {{ audioPlayer.title }}
+            </h3>
+            
+            <button @click="audioPlayer.toggleTrack()">Toggle</button>
         </div>
     </div>
 </template>

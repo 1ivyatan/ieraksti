@@ -20,6 +20,8 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             }
 
             this.audio = new Audio(music.audio);
+            this.audio.controls = true;
+
             this.title = music.title;
             this.coverUrl = (music.cover != null) ? music.cover : null;
 
@@ -39,6 +41,14 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
         openAndPlay(music) {
             this.openTrack(music);
             this.playTrack();
+        },
+
+        toggleTrack() {
+            if (this.playing) {
+                this.pauseTrack();
+            } else {
+                this.playTrack();
+            }
         }
     }
 });
