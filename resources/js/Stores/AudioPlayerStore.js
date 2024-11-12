@@ -1,34 +1,44 @@
 import { defineStore } from 'pinia';
 
-export const useCounterStore = defineStore('counter', {
+export const useAudioPlayerStore = defineStore("audioPlayer", {
     state: () => {
-      return { count: 0 }
+        return {
+            audio: null,
+            playing: false,
+
+            /* metadata */
+            title: "",
+            coverUrl: null,
+        }
     },
-    // could also be defined as
-    // state: () => ({ count: 0 })
+
     actions: {
-      increment() {
-        this.count++
-      },
-    },
-  })
+        openTrack(music) {
+            if (this.playing) {
+                pauseTrack();
+                this.audio.src = "";
+            }
 
-  export const useAudioUrlStore = defineStore('audiourl', {
-      state: () => {
-        return { audiourl: "" }
-      },
-      // could also be defined as
-      // state: () => ({ count: 0 })
-      actions: {
-        set(url) {
-            //if ()
+            this.audio = new Audio(music.audio);
+            this.title = music.title;
+            this.coverUrl = (music.cover != null) ? music.cover : null;
 
-            this.audiourl = url;
-            const audio = new Audio(this.audiourl);
-          
-            audio.addEventListener("loadedmetadata", function() {
-                audio.play();
-            })
+            console.log(this.audio)
         },
-      },
-    })
+
+        playTrack() {
+            this.playing = true;
+            this.audio.play();
+        },
+
+        pauseTrack() {
+            this.playing = false;
+            this.audio.pause();
+        },
+
+        openAndPlay(music) {
+            this.openTrack(music);
+            this.playTrack();
+        }
+    }
+});

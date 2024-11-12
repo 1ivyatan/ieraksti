@@ -6,6 +6,7 @@ import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
 import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
 import { Head } from '@inertiajs/vue3';
 
+
 const props = defineProps({
     music: {
         type: Object,
@@ -31,10 +32,6 @@ const editMusic = () => {
             </div>
 
             <ShowPlayButton :music="props.music"/>
-            
-            <p>
-                {{ music }}
-            </p>
         </section>
         
     </WithSidebarSearchLayout>
