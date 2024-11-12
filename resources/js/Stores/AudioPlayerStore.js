@@ -21,7 +21,14 @@ export const useCounterStore = defineStore('counter', {
       // state: () => ({ count: 0 })
       actions: {
         set(url) {
-          this.audiourl = url;
+            //if ()
+
+            this.audiourl = url;
+            const audio = new Audio(this.audiourl);
+          
+            audio.addEventListener("loadedmetadata", function() {
+                audio.play();
+            })
         },
       },
     })

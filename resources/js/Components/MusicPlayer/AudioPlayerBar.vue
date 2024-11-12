@@ -23,12 +23,14 @@ const audiourl = useAudioUrlStore();
                 {{ counter.count }}
             </button>
 
+            <input type="button" :value="audiourl.audiourl">
+
             <p>{{ audiourl.audiourl }}</p>
         
         </div>
 
-        <audio controls>
-            <source @src="audiourl.audiourl" type="audio/mpeg">
+        <audio controls :id="test">
+            <source :src="audiourl.audiourl" type="audio/mpeg">
         Your browser does not support the audio element.
         </audio> 
     </div>
