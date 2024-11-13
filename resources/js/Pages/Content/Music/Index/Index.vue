@@ -15,6 +15,5 @@ const props = defineProps({
     <Head title="Tracks" />
     <WithSidebarSearchLayout>
         <MusicCardDeck :tracks="tracks"/>
-        {{ tracks }}
     </WithSidebarSearchLayout>
 </template>

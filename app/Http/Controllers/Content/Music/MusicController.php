@@ -18,18 +18,25 @@ use App\Models\Music;
 
 class MusicController extends Controller
 {
-    public static function find(String $id) {
+    public function setCover(Music $track): Music
+    {
+        if ($track->cover) {
+            $track->cover = Storage::url($track->cover);
+        }
+
+        return $track;
+    }
+
+    public function find(String $id) {
         $track = Music::findOrFail($id);
 
         return $track;
     }
 
-    public static function findAndCoatIt(String $id) {
-        $track = MusicController::find($id);
+    public function findAndCoatIt(String $id) {
+        $track = $this->find($id);
 
-        if ($track->cover) {
-            $track->cover = Storage::url($track->cover);
-        }
+        $track = $this->setCover($track);
 
         $track->audio = Storage::url($track->audio);
 
@@ -41,10 +48,7 @@ class MusicController extends Controller
         $tracks = MusicResource::collection(
             Music::all()->map(
                 function (Music $track) {
-                    if ($track->cover) {
-                        $track->cover = Storage::url($track->cover);
-                    }
-
+                    $track = $this->setCover($track);
                     return $track;
                 }
             )
