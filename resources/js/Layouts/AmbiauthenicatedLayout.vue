@@ -153,6 +153,11 @@ const showingNavigationDropdown = ref(false);
                         >
                             Home
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('content.music.index')"
+                        >
+                            Tracks
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
