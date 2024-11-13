@@ -63,10 +63,10 @@ class MusicController extends Controller
         $validated = $request->validated();
 
         if ($validated["cover"]) {
-            $validated["cover"] = Storage::putFile("covers", $request->file("cover"));
+            $validated["cover"] = Storage::disk('public')->put("covers", $request->file("cover"));
         }
 
-        $validated["audio"] = Storage::putFile("audio", $request->file("audio"));
+        $validated["audio"] = Storage::disk('public')->put("audio", $request->file("audio"));
         
         $track = auth()->user()->music()->create($validated);
 
