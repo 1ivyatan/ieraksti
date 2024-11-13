@@ -1,6 +1,6 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
-import VertMusicCard from '@/Components/Music/VertMusicCard.vue';
+import HorizMusicCard from '@/Components/Music/HorizMusicCard.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
 import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
@@ -24,7 +24,7 @@ const editMusic = () => {
 
     <WithSidebarSearchLayout>
         <section>
-            <VertMusicCard :music="props.music"/>
+            <HorizMusicCard :music="props.music"/>
 
             <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
                 <PrimaryButton @click="editMusic">Upload</PrimaryButton>
