@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Content\Music;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Content\MusicCreateRequest;
+use App\Http\Resources\Content\MusicResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -33,6 +34,15 @@ class MusicController extends Controller
         $track->audio = Storage::url($track->audio);
 
         return $track;
+    }
+
+    public function index(Request $request): Response
+    {
+        $tracks = MusicResource::collection(Music::all());
+
+        return Inertia::render('Content/Music/Index/Index', [
+            "tracks" => $tracks
+        ]);
     }
 
     public function show(Request $request, String $id): Response

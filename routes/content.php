@@ -5,6 +5,7 @@ use App\Http\Controllers\Content\Music\MusicInfoController;
 use App\Http\Controllers\Content\Music\MusicCoverController;
 use App\Http\Controllers\Content\Music\MusicAudioController;
 
+Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
 
 Route::middleware('auth')->group(function () {
