@@ -17,7 +17,7 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
     actions: {
         openTrack(music) {
             if (this.playing) {
-                pauseTrack();
+                this.pauseTrack();
                 this.audio.src = "";
             }
 
