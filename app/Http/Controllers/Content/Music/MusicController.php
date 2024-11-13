@@ -38,7 +38,17 @@ class MusicController extends Controller
 
     public function index(Request $request): Response
     {
-        $tracks = MusicResource::collection(Music::all());
+        $tracks = MusicResource::collection(
+            Music::all()->map(
+                function (Music $track) {
+                    if ($track->cover) {
+                        $track->cover = Storage::url($track->cover);
+                    }
+
+                    return $track;
+                }
+            )
+        );
 
         return Inertia::render('Content/Music/Index/Index', [
             "tracks" => $tracks
