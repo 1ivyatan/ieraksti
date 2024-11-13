@@ -1,5 +1,6 @@
 <script setup>
 import Cover from './Cover.vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     music: {
@@ -14,7 +15,7 @@ const props = defineProps({
     <div 
         class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
     >
-        <a 
+        <Link 
             :href="route('content.music.show', {
                 id: props.music.id
             })"
@@ -23,6 +24,6 @@ const props = defineProps({
             <h2>
                 {{ music.title }}
             </h2>
-        </a>
+        </Link>
     </div>
 </template>

@@ -27,6 +27,9 @@ const showingNavigationDropdown = ref(false);
                                         class="block h-9 w-auto fill-current text-gray-800"
                                     />
                                 </Link>
+                                <Link :href="route('content.music.index')">
+                                    Tracks
+                                </Link>
                             </div>
                         </div>
 
