@@ -18,7 +18,6 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
         openTrack(music) {
             if (this.playing) {
                 this.pauseTrack();
-                this.audio.src = "";
             }
 
             this.audio = new Audio(music.audio);
@@ -26,8 +25,6 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
 
             this.title = music.title;
             this.coverUrl = (music.cover != null) ? music.cover : null;
-
-            console.log(this.audio)
         },
 
         playTrack() {
