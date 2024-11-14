@@ -13,7 +13,10 @@ const props = defineProps({
 
 <template>
     <div 
-        class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
+        class="
+            bg-white p-4 shadow sm:rounded-lg sm:p-8
+            w-32 
+            "
     >
         <Link 
             :href="route('content.music.show', {
@@ -21,7 +24,7 @@ const props = defineProps({
             })"
         >
             <Cover :src="props.music.cover"/>
-            <h2>
+            <h2 class="text-ellipsis  overflow-hidden">
                 {{ music.title }}
             </h2>
         </Link>

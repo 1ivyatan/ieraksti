@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex"
+        class="flex flex-wrap justify-items-center gap-x-2 gap-y-2"
     >
         <div v-for="track in tracks.data">
             <VertMusicCard :music="track"/>
