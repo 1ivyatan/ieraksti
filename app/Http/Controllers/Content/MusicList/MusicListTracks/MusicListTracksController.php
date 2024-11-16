@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MusicList\MusicListTracks;
 
-use App\Models\MusicList;
+use App\Models\MusicListTracks;
 use Illuminate\Http\Request;
 
-class MusicListController extends Controller
+class MusicListTracksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class MusicListController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MusicList $musicList)
+    public function show(MusicListTracks $musicListTracks)
     {
         //
     }
@@ -42,7 +42,7 @@ class MusicListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MusicList $musicList)
+    public function edit(MusicListTracks $musicListTracks)
     {
         //
     }
@@ -50,7 +50,7 @@ class MusicListController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MusicList $musicList)
+    public function update(Request $request, MusicListTracks $musicListTracks)
     {
         //
     }
@@ -58,7 +58,7 @@ class MusicListController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MusicList $musicList)
+    public function destroy(MusicListTracks $musicListTracks)
     {
         //
     }
