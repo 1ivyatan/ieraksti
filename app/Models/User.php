@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Enums\UserType;
 
+use App\Models\MusicList;
 use App\Models\Music;
 
 class User extends Authenticatable
@@ -58,5 +59,9 @@ class User extends Authenticatable
     /* music */
     public function music(): HasMany {
         return $this->hasMany(Music::class, "uploader_id");
+    }
+
+    public function musicList(): HasMany {
+        return $this->hasMany(MusicList::class, "creator_id");
     }
 }
