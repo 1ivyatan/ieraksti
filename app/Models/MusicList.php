@@ -11,6 +11,8 @@ use App\Models\User;
 
 class MusicList extends Model
 {
+    public $table = 'music_list';
+    
     protected $fillable = [
         'title'
     ];

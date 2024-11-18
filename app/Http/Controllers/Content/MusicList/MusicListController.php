@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\MusicList;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\Content\MusicListRequest;
+
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -30,9 +32,13 @@ class MusicListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MusicListRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $track = auth()->user()->musicList()->create($validated);
+
+        dd($track);
     }
 
     /**
