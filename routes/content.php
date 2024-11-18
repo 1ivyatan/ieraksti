@@ -13,6 +13,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(["auth", "privileged"])->group(function () {
+    /* music */
     Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');
     Route::post("/upload", [MusicController::class, "store"])->name('content.music.upload');
 
@@ -23,4 +24,7 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::post("track-cover-update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
     Route::post("track-audio-update/{id}", [MusicAudioController::class, "update"])->name("content.music.audio.update");
     Route::delete("track-cover-destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
+
+    /* playlists */
+    
 });
