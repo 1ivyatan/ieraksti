@@ -39,7 +39,7 @@ class MusicListController extends Controller
 
         $trackList = auth()->user()->musicList()->create($validated);
 
-        return Redirect::route("content.musiclist.show", [
+        return Redirect::route("content.musiclist.edit", [
             "id" => $trackList->id
         ]);
     }
