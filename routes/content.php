@@ -1,9 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Content\Music\MusicController;
 use App\Http\Controllers\Content\Music\MusicInfoController;
 use App\Http\Controllers\Content\Music\MusicCoverController;
 use App\Http\Controllers\Content\Music\MusicAudioController;
+
+use App\Http\Controllers\Content\MusicList\MusicListController;
 
 Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
@@ -26,5 +29,5 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::delete("track-cover-destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
 
     /* playlists */
-    
+    Route::get("/lists/create", [MusicListController::class, "create"])->name('content.musiclist.create');
 });
