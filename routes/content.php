@@ -31,4 +31,6 @@ Route::middleware(["auth", "privileged"])->group(function () {
     /* playlists */
     Route::get("/lists/create", [MusicListController::class, "create"])->name('content.musiclist.create');
     Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
+
+    Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 });

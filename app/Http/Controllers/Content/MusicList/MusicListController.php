@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Content\MusicList;
 use App\Http\Controllers\Controller;
 use App\Models\MusicList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Requests\Content\MusicListRequest;
 
@@ -36,17 +37,23 @@ class MusicListController extends Controller
     {
         $validated = $request->validated();
 
-        $track = auth()->user()->musicList()->create($validated);
+        $trackList = auth()->user()->musicList()->create($validated);
 
-        dd($track);
+        return Redirect::route("content.musiclist.show", [
+            "id" => $trackList->id
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(MusicList $musicList)
+    public function show(MusicList $musicList, String $id)
     {
-        //
+        $trackList = MusicList::findOrFail($id);
+
+        return Inertia::render('Content/MusicList/Show/Show', [
+            "musicList" => $trackList
+        ]);
     }
 
     /**
