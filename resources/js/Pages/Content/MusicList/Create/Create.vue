@@ -8,6 +8,7 @@ import { Head, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import DangerButton from '@/Components/Button/DangerButton.vue';
 
+
 const form = useForm({
     title: ""
 });

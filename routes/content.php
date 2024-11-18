@@ -33,4 +33,5 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
 
     Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
+    Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
 });

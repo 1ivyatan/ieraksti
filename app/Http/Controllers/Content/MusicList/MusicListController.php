@@ -51,6 +51,10 @@ class MusicListController extends Controller
     {
         $trackList = MusicList::findOrFail($id);
 
+        $tracks = $trackList->musicListTracks();
+
+        dd($tracks);
+
         return Inertia::render('Content/MusicList/Show/Show', [
             "musicList" => $trackList
         ]);
@@ -59,9 +63,13 @@ class MusicListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MusicList $musicList)
+    public function edit(MusicList $musicList, String $id)
     {
-        //
+        $trackList = MusicList::findOrFail($id);
+
+        return Inertia::render('Content/MusicList/Edit/Edit', [
+            "musicList" => $trackList
+        ]);
     }
 
     /**
