@@ -1,5 +1,7 @@
 <script setup>
 import Modal from '@/Components/Other/Modal.vue';
+import ListTrackShow from "@/Pages/Content/MusicListTracks/Show/Show.vue";
+
 import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -10,13 +12,29 @@ const props = defineProps({
     }
 });
 
+const addToPlaylistModalOpen = ref(false);
+
+const openPlaylistModal = () => {
+    addToPlaylistModalOpen.value = true;
+};
+
+const closeModal = () => {
+    addToPlaylistModalOpen.value = false;
+};
+
 </script>
 
 <template>
     <button
         type="button"
         class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+        @click="openPlaylistModal"
     >
         Add to music list
     </button>
+
+    <Modal :show="addToPlaylistModalOpen" @close="closeModal">
+        <ListTrackShow />
+    </Modal>
+
 </template>
