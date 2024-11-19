@@ -3,7 +3,7 @@ import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 
 import Delete from "./Items/Delete.vue";
-import AddToPlaylist from "./Items/AddToPlaylist.vue";
+import AddToPlaylist from "./Items/AddToPlayList.vue";
 
 const props = defineProps({
     music: {
