@@ -28,9 +28,11 @@ const props = defineProps({
         </template>
 
         <template #content>
+            <div v-if="$page.props.auth.user">
+                <AddToPlaylist :id="props.music.id" />
+            </div>
 
             <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
-            <!-- edit -->
                 <DropdownLink
                     :href="route('content.music.edit', {
                         id: props.music.id
@@ -40,8 +42,6 @@ const props = defineProps({
                 </DropdownLink>
 
                 <Delete :id="props.music.id" />
-
-                <AddToPlaylist :id="props.music.id" />
             </div>
         </template>
 
