@@ -2,7 +2,7 @@
 import InputError from '@/Components/Input/InputError.vue';
 import InputLabel from '@/Components/Input/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import Cover from '@/Components/Music/Cover.vue';
+import Cover from '@/Components/Music/Cover/Cover.vue';
 import Modal from '@/Components/Other/Modal.vue';
 import { useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';

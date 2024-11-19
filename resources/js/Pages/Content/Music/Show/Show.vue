@@ -1,8 +1,11 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
-import HorizMusicCard from '@/Components/Music/HorizMusicCard.vue';
+import HorizMusicCard from '@/Components/Music/MusicCard/HorizMusicCard.vue';
 import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';
 import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
+
+import MusicMenuButtons from '@/Components/Music/MusicMenuButtons/MusicMenuButtons.vue';
+
 import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -23,6 +26,8 @@ const editMusic = () => {
     <WithSidebarSearchLayout>
         <section>
             <HorizMusicCard :music="props.music"/>
+
+            <MusicMenuButtons :music="props.music" />
 
             <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
                 <Link

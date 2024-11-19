@@ -1,7 +1,7 @@
 <script setup>
 import { Head, } from '@inertiajs/vue3';
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
-import MusicCardDeck from '@/Components/Music/MusicCardDeck.vue';
+import MusicCardDeck from '@/Components/Music/MusicCardDeck/MusicCardDeck.vue';
 
 const props = defineProps({
     tracks: {

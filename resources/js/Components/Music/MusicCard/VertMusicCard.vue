@@ -1,5 +1,5 @@
 <script setup>
-import Cover from './Cover.vue';
+import Cover from '../Cover/Cover.vue';
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
