@@ -3,6 +3,7 @@ import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 
 import Delete from "./Items/Delete.vue";
+import AddToPlaylist from "./Items/AddToPlaylist.vue";
 
 const props = defineProps({
     music: {
@@ -10,11 +11,6 @@ const props = defineProps({
         required: true,
     },
 });
-
-const h = () => {
-    console.log('dada')
-}
-
 </script>
 
 <template>
@@ -44,6 +40,8 @@ const h = () => {
                 </DropdownLink>
 
                 <Delete :id="props.music.id" />
+
+                <AddToPlaylist :id="props.music.id" />
             </div>
         </template>
 
