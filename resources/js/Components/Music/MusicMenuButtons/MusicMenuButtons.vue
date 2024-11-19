@@ -33,16 +33,18 @@ const h = () => {
 
         <template #content>
 
+            <div v-if="$page.props.auth.user && $page.props.auth.user.id == music.uploader_id">
             <!-- edit -->
-            <DropdownLink
-                :href="route('content.music.edit', {
-                    id: props.music.id
-                })"
-            >
-                Edit
-            </DropdownLink>
+                <DropdownLink
+                    :href="route('content.music.edit', {
+                        id: props.music.id
+                    })"
+                >
+                    Edit
+                </DropdownLink>
 
-            <Delete :id="props.music.id" />
+                <Delete :id="props.music.id" />
+            </div>
         </template>
 
     </Dropdown>
