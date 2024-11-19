@@ -1,4 +1,5 @@
 <script setup>
+import MusicMenuButtons from '@/Components/Music/MusicMenuButtons/MusicMenuButtons.vue';
 import Cover from '../Cover/Cover.vue';
 import { Link } from '@inertiajs/vue3';
 
@@ -28,5 +29,7 @@ const props = defineProps({
                 {{ music.title }}
             </h2>
         </Link>
+
+        <MusicMenuButtons :music="props.music" />
     </div>
 </template>

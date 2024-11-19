@@ -1,4 +1,5 @@
 <script setup>
+import MusicMenuButtons from '@/Components/Music/MusicMenuButtons/MusicMenuButtons.vue';
 import Cover from '../Cover/Cover.vue';
 
 const props = defineProps({
@@ -15,5 +16,7 @@ const props = defineProps({
         <div>
             <h2>{{ music.title }}</h2>
         </div>
+    
+        <MusicMenuButtons :music="props.music" />
     </div>
 </template>

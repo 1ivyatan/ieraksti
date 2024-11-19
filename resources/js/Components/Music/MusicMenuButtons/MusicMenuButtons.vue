@@ -46,6 +46,4 @@ const props = defineProps({
         </template>
 
     </Dropdown>
-
-    {{ $page.props.auth.user }}
 </template>
