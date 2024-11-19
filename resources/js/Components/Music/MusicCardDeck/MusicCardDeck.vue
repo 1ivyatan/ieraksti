@@ -1,5 +1,5 @@
 <script setup>
-import VertMusicCard from '@/Components/Music/VertMusicCard.vue';
+import VertMusicCard from '@/Components/Music/MusicCard/VertMusicCard.vue';
 
 const props = defineProps({
     tracks: {

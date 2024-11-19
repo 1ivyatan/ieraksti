@@ -20,16 +20,6 @@ const createList = () => {
 
 <template>
     <Head title="Create List" />
-
-    <AmbiauthenicatedLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Create List
-            </h2>
-        </template>
-
         <section>
             <form
                 class="mt-6 space-y-6"
@@ -59,5 +49,4 @@ const createList = () => {
                 </progress>
             </form>
         </section>
-    </AmbiauthenicatedLayout>
 </template>
