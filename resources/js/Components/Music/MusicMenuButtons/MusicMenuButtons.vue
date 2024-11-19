@@ -2,12 +2,19 @@
 import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 
+import Delete from "./Items/Delete.vue";
+
 const props = defineProps({
     music: {
         type: Object,
         required: true,
     },
 });
+
+const h = () => {
+    console.log('dada')
+}
+
 </script>
 
 <template>
@@ -19,17 +26,23 @@ const props = defineProps({
                     type="button"
                     class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
                 >
-                    Menu                      
+                    &#8942;                      
                 </button>
             </span>
         </template>
 
         <template #content>
+
+            <!-- edit -->
             <DropdownLink
-                :href="route('profile.edit')"
+                :href="route('content.music.edit', {
+                    id: props.music.id
+                })"
             >
-                Profile
+                Edit
             </DropdownLink>
+
+            <Delete :id="props.music.id" />
         </template>
 
     </Dropdown>
