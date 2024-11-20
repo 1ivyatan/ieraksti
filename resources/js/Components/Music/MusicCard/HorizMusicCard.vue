@@ -16,7 +16,6 @@ const props = defineProps({
         <div>
             <h2>{{ music.title }}</h2>
         </div>
-    
         <MusicMenuButtons :music="props.music" />
     </div>
 </template>

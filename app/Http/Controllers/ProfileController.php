@@ -60,4 +60,10 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function musicTracks(Request $request, String $id) {
+        $tracks = MusicList::findOrFail($id)->musicListTracks();
+        
+        return $tracks;
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Content\Music\MusicCoverController;
 use App\Http\Controllers\Content\Music\MusicAudioController;
 
 use App\Http\Controllers\Content\MusicList\MusicListController;
+use App\Http\Controllers\Content\MusicList\MusicListTracks\MusicListTrackController;
 
 Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
@@ -35,5 +36,9 @@ Route::middleware(["auth", "privileged"])->group(function () {
     
     Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
 
-    Route::post("track-list-add/{playlistid}/{trackid}", [MusicListController::class, "store"])->name('content.musiclist.store');
+    //////////////////////////////
+    Route::post("user-track-list-show/{playlistid}", [MusicListController::class, "show"])->name('content.musiclist.show');
+
+    Route::post("track-list-add/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.store');
+    Route::post("track-list-show/{playlistid}", [MusicListTrackController::class, "store"])->name('content.musiclist.show');
 });
