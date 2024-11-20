@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
+use App\Models\MusicList;
+
 class ProfileController extends Controller
 {
     /**
@@ -59,11 +61,5 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
-    }
-
-    public function musicTracks(Request $request, String $id) {
-        $tracks = MusicList::findOrFail($id)->musicListTracks();
-        
-        return $tracks;
     }
 }
