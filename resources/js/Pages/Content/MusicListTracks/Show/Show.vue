@@ -6,11 +6,11 @@ const props = defineProps({
     
 });
 
-const huh = usePage().props.auth.user//axios.get(route('user.musiclist.show', {
-    //id: ,
-//}));
+const huh = axios.get(route('user.musiclist.show', {
+    id: usePage().props.auth.user.id,
+}));
 </script>
 
 <template>
-    {{ huh }}
+    
 </template>
