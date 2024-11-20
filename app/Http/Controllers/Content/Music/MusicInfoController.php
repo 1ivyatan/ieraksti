@@ -13,7 +13,7 @@ class MusicInfoController extends Controller
 {
     public function update(MusicInfoUpdateRequest $request, String $id): RedirectResponse
     {
-        $track = MusicController::find($id);
+        $track = MusicController::findOrFail($id);
 
         $track->fill($request->validated());
 

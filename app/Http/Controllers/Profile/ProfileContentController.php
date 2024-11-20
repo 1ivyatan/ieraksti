@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,11 +14,12 @@ use Inertia\Inertia;
 use Inertia\Response;
 
 use App\Models\MusicList;
+use App\Models\User;
 
-class UserProfileController extends Controller
+class ProfileContentController extends Controller
 {
-    public function musicTracks(Request $request, String $id) {
-        $tracks = //MusicList::findOrFail($id)->musicListTracks();
+    public function musicTracksFromProfile(Request $request, String $id) {
+        $tracks = User::findOrFail() ;//MusicList::findOrFail($id)->musicListTracks();
         
         dd($tracks);
 

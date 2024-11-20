@@ -13,10 +13,6 @@ Route::get("/tracks", [MusicController::class, "index"])->name('content.music.in
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
 Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 
-Route::middleware('auth')->group(function () {
-
-});
-
 Route::middleware(["auth", "privileged"])->group(function () {
     /* music */
     Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');
