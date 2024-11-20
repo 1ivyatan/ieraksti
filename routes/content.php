@@ -10,6 +10,7 @@ use App\Http\Controllers\Content\MusicList\MusicListController;
 
 Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
+Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 
 Route::middleware('auth')->group(function () {
 
@@ -31,7 +32,8 @@ Route::middleware(["auth", "privileged"])->group(function () {
     /* playlists */
     Route::get("/lists/create", [MusicListController::class, "create"])->name('content.musiclist.create');
     Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
-
-    Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
+    
     Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
+
+    Route::post("track-list-add/{playlistid}/{trackid}", [MusicListController::class, "store"])->name('content.musiclist.store');
 });
