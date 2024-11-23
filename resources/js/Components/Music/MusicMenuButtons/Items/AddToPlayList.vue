@@ -22,6 +22,10 @@ const closeModal = () => {
     addToPlaylistModalOpen.value = false;
 };
 
+const addToPlaylist = (id) => {
+    console.log(id)
+}
+
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const closeModal = () => {
     </button>
 
     <Modal :show="addToPlaylistModalOpen" @close="closeModal">
-        <Picker :targetMusic="props.id"/>
+        <Picker :targetMusic="props.id" :action="addToPlaylist"/>
     </Modal>
 
 </template>
