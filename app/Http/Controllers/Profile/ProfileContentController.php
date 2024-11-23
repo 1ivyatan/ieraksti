@@ -18,7 +18,7 @@ use App\Models\User;
 
 class ProfileContentController extends Controller
 {
-    public function musicTracksFromProfile(Request $request, String $id) {
+    public function musicTracksFromProfile(Request $request) {
         $tracks = $request->user()->musicList()->get();
 
         return $tracks;

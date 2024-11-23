@@ -16,5 +16,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get("user-track-list-show/{id}", [ProfileContentController::class, "musicTracksFromProfile"])->name('user.musiclist.show');
+    Route::get("user-track-list-show", [ProfileContentController::class, "musicTracksFromProfile"])->name('user.musiclist.show');
 });
