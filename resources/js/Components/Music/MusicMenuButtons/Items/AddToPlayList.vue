@@ -1,6 +1,6 @@
 <script setup>
 import Modal from '@/Components/Other/Modal.vue';
-import ListTrackShow from "@/Pages/Content/MusicListTracks/Show/Show.vue";
+import Picker from "@/Components/MusicList/Picker/Picker.vue";
 
 import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -34,7 +34,7 @@ const closeModal = () => {
     </button>
 
     <Modal :show="addToPlaylistModalOpen" @close="closeModal">
-        <ListTrackShow />
+        <Picker :targetMusic="props.id"/>
     </Modal>
 
 </template>

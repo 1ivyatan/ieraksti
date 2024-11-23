@@ -1,13 +1,16 @@
 <script setup>
 
 const props = defineProps({
-    track: {
-        type: Object,
+    targetMusic: {
+        type: String,
         required: true
     }
 });
+
 </script>
 
 <template>
-    {{ props.track.title }}
+    hi!
+
+    {{ props.targetMusic }}
 </template>

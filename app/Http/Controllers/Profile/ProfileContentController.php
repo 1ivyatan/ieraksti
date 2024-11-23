@@ -19,11 +19,8 @@ use App\Models\User;
 class ProfileContentController extends Controller
 {
     public function musicTracksFromProfile(Request $request, String $id) {
-        //$tracks = User::findOrFail($id)->musicList()->get();
         $tracks = $request->user()->musicList()->get();
 
-        return Inertia::render('Profile/Content/MusicList/Show/Show', [
-            "trackList" => $tracks
-        ]);
+        return $tracks;
     }
 }

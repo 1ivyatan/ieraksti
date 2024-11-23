@@ -1,3 +1,0 @@
-<template>
-    sdfsdfd
-</template>
