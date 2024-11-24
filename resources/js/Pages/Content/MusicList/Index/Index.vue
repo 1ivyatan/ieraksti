@@ -14,6 +14,9 @@ const props = defineProps({
 <template>
     <Head title="Tracks" />
     <WithSidebarSearchLayout>
-        <ListCard :list="item" v-for="item in lists.data"/>
+        
+        {{ props.lists }}
+
+        <ListCard :list="item" v-for="item in props.lists.data"/>
     </WithSidebarSearchLayout>
 </template>

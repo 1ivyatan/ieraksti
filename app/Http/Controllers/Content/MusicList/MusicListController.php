@@ -21,7 +21,13 @@ class MusicListController extends Controller
     public function index()
     {
         $lists = MusicListResource::collection(
-            MusicList::all()
+            MusicList::all()->map(
+                function (MusicList $list) {
+                    if ($list->musicListTracks()->get()->first()) {
+                        return $list;
+                    }
+                }
+            )
         );
 
         return Inertia::render('Content/MusicList/Index/Index', [
@@ -57,7 +63,7 @@ class MusicListController extends Controller
     public function show(MusicList $musicList, String $id)
     {
         $trackListInfo = MusicList::findOrFail($id);
-        
+
         $trackListTracks = $trackListInfo->musicListTracks()->get();
 
         return Inertia::render('Content/MusicList/Show/Show', [
