@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Requests\Content\MusicListRequest;
+use App\Http\Resources\Content\MusicListResource;
 
 use Inertia\Inertia;
 use Inertia\Response;
@@ -19,7 +20,13 @@ class MusicListController extends Controller
      */
     public function index()
     {
-        //
+        $lists = MusicListResource::collection(
+            MusicList::all()
+        );
+
+        return Inertia::render('Content/MusicList/Index/Index', [
+            "lists" => $lists
+        ]);
     }
 
     /**

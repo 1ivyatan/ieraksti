@@ -13,9 +13,6 @@ const props = defineProps({
     },
 });
 
-const editMusic = () => {
-    alert("hi!");
-}
 </script>
 
 <template>
