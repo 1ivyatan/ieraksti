@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Content\MusicList\MusicListTracks;
 
 use App\Http\Controllers\Controller;
-use App\Models\MusicListTracks;
 use Illuminate\Http\Request;
+
+use App\Models\Music;
+use App\Models\MusicList;
+use App\Models\MusicListTracks;
 
 class MusicListTrackController extends Controller
 {
@@ -29,7 +32,17 @@ class MusicListTrackController extends Controller
      */
     public function store(Request $request, String $playlistid, String $trackid)
     {
-        return "jajaja";
+        $trackList = MusicList::findOrFail($playlistid);
+        $track = Music::findOrFail($trackid);
+
+        $trackListItem = new MusicListTracks;
+
+        $trackListItem->music_list_id = $trackList->id;
+        $trackListItem->music_id = $track->id;
+
+        $trackListItem->save();
+        
+        return;
     }
 
     /**

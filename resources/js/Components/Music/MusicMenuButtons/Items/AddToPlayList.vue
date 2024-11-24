@@ -25,9 +25,11 @@ const closeModal = () => {
 };
 
 const addToPlaylist = (id) => {
+
+
     axios.post(route('content.musiclist.tracks.add', {
-        playlistid: props.id,
-        trackid: id
+        playlistid: id,
+        trackid: props.id
     }))
     .then((response) => {
         console.log(response)
