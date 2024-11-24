@@ -31,10 +31,8 @@ Route::middleware(["auth", "privileged"])->group(function () {
     Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
     
     Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
+    
+    Route::get("user-track-list-show/{playlistid}", [MusicListController::class, "show"])->name('content.musiclist.tracks.show');
 
-    //////////////////////////////
-    Route::post("user-track-list-show/{playlistid}", [MusicListController::class, "show"])->name('content.musiclist.show');
-
-    Route::post("track-list-add/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.store');
-    Route::post("track-list-show/{playlistid}", [MusicListTrackController::class, "store"])->name('content.musiclist.show');
+    Route::post("track-list-store/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.tracks.add');
 });

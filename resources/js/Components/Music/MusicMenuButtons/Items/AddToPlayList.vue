@@ -2,7 +2,8 @@
 import Modal from '@/Components/Other/Modal.vue';
 import Picker from "@/Components/MusicList/Picker/Picker.vue";
 
-import { router } from '@inertiajs/vue3';
+import axios from "axios";
+import { router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -12,6 +13,7 @@ const props = defineProps({
     }
 });
 
+/* modal */
 const addToPlaylistModalOpen = ref(false);
 
 const openPlaylistModal = () => {
@@ -23,7 +25,13 @@ const closeModal = () => {
 };
 
 const addToPlaylist = (id) => {
-    console.log(id)
+    axios.post(route('content.musiclist.tracks.add', {
+        playlistid: props.id,
+        trackid: id
+    }))
+    .then((response) => {
+        console.log(response)
+    });
 }
 
 </script>
@@ -37,7 +45,10 @@ const addToPlaylist = (id) => {
         Add to music list
     </button>
 
-    <Modal :show="addToPlaylistModalOpen" @close="closeModal">
+    <Modal 
+        :show="addToPlaylistModalOpen"
+        @close="closeModal"
+    >
         <Picker :targetMusic="props.id" :action="addToPlaylist"/>
     </Modal>
 

@@ -39,15 +39,19 @@ const select = (id) => {
         Select playlist
     </h1>
 
-    <div 
-        v-for="item in musicLists.list"
-        class="mb-4"
+    <div
+        class="overflow-auto max-h-80"
     >
-        <button
-            @click="select(item.id)"
+        <div 
+            v-for="item in musicLists.list"
+            class="mb-4"
         >
-            {{ item.title }}
-        </button>
+            <button
+                @click="select(item.id)"
+            >
+                {{ item.title }}
+            </button>
+        </div>
     </div>
 
     <PrimaryButton
