@@ -15,6 +15,8 @@ const props = defineProps({
 
 /* modal */
 const addToPlaylistModalOpen = ref(false);
+const messageBoxShow = ref(false);
+const messageBoxText = ref("");
 
 const openPlaylistModal = () => {
     addToPlaylistModalOpen.value = true;
@@ -24,15 +26,22 @@ const closeModal = () => {
     addToPlaylistModalOpen.value = false;
 };
 
-const addToPlaylist = (id) => {
+const showMessageBox = (toggle) => {
+    messageBoxShow.value = toggle;
+};
 
+const addToPlaylist = (id) => {
+    showMessageBox(false);
 
     axios.post(route('content.musiclist.tracks.add', {
         playlistid: id,
         trackid: props.id
     }))
     .then((response) => {
-        console.log(response)
+        if (response.status == 200) {
+            showMessageBox(true);
+            messageBoxText.value = "Success";
+        }
     });
 }
 
@@ -52,6 +61,10 @@ const addToPlaylist = (id) => {
         @close="closeModal"
     >
         <Picker :targetMusic="props.id" :action="addToPlaylist"/>
+        
+        <div v-show="messageBoxShow">
+            {{ messageBoxText }}
+        </div>
     </Modal>
 
 </template>
