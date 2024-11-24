@@ -30,6 +30,9 @@ const showingNavigationDropdown = ref(false);
                                 <Link :href="route('content.music.index')">
                                     Tracks
                                 </Link>
+                                <Link :href="route('content.musiclist.index')">
+                                    Lists
+                                </Link>
                             </div>
                         </div>
 
@@ -157,6 +160,11 @@ const showingNavigationDropdown = ref(false);
                             :href="route('content.music.index')"
                         >
                             Tracks
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('content.musiclist.index')"
+                        >
+                            Lists
                         </ResponsiveNavLink>
                     </div>
 
