@@ -56,15 +56,13 @@ class MusicListController extends Controller
      */
     public function show(MusicList $musicList, String $id)
     {
-        ////////////////////////////////
-        $trackList = MusicList::findOrFail($id);
-
-        $tracks = $trackList->musicListTracks();
-
-        dd($tracks);
+        $trackListInfo = MusicList::findOrFail($id);
+        
+        $trackListTracks = $trackListInfo->musicListTracks()->get();
 
         return Inertia::render('Content/MusicList/Show/Show', [
-            "musicList" => $trackList
+            "musicListInfo" => $trackListInfo,
+            "musicListTracks" => $trackListTracks
         ]);
     }
 

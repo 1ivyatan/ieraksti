@@ -28,11 +28,13 @@ Route::middleware(["auth", "privileged"])->group(function () {
 
     /* playlists */
     Route::get("/lists", [MusicListController::class, "index"])->name('content.musiclist.index');
+    Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 
     Route::get("/lists/create", [MusicListController::class, "create"])->name('content.musiclist.create');
     Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
     Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
     
-    Route::get("user-track-list-show/{playlistid}", [MusicListController::class, "show"])->name('content.musiclist.tracks.show');
+    
+
     Route::post("track-list-store/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.tracks.add');
 });

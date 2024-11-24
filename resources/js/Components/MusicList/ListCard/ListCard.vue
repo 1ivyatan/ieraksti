@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
+
 const props = defineProps({
     list: {
         type: Object,
@@ -9,8 +11,14 @@ const props = defineProps({
 
 <template>
     <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 flex flex-wrap">
-        <div>
-            <h2>{{ list.title }}</h2>
-        </div>
+        <Link 
+            :href="route('content.musiclist.show', {
+                id: props.list.id
+            })"
+        >
+            <h2>
+                {{ props.list.title }}
+            </h2>
+        </Link>
     </div>
 </template>

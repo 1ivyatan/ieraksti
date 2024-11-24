@@ -6,7 +6,11 @@ import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
-    musicList: {
+    musicListInfo: {
+        type: Object,
+        required: true,
+    },
+    musicListTracks: {
         type: Object,
         required: true,
     },
@@ -15,7 +19,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head :title="props.musicList.title" />
+    <Head :title="props.musicListInfo.title" />
 
     <WithSidebarSearchLayout>
         <section>
@@ -29,7 +33,10 @@ const props = defineProps({
 
         </section>
         
-        {{ musicList }}
+        {{ props.musicListInfo }}
+
+
+        {{ props.musicListTracks }}
 
     </WithSidebarSearchLayout>
 </template>

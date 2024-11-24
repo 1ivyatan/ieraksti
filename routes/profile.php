@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Profile\ProfileContentController;
 
+use App\Http\Controllers\Content\MusicList\MusicListController;
 
 /* logged in */
 Route::middleware('auth')->group(function () {
@@ -16,5 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get("user-track-list-show/{playlistid}", [MusicListController::class, "show"])->name('content.musiclist.tracks.show');
+    
+    
     Route::get("user-track-list-show", [ProfileContentController::class, "musicTracksFromProfile"])->name('user.musiclist.show');
 });
