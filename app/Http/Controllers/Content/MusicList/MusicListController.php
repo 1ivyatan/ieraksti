@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MusicList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\Eloquent\Builder;
 
 use App\Http\Requests\Content\MusicListRequest;
 use App\Http\Resources\Content\MusicListResource;
@@ -21,7 +22,7 @@ class MusicListController extends Controller
     public function index()
     {
         $lists = MusicListResource::collection(
-            MusicList::all()->map(
+            MusicList::all()->filter(
                 function (MusicList $list) {
                     if ($list->musicListTracks()->get()->first()) {
                         return $list;
