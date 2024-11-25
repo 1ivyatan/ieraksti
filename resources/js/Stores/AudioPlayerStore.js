@@ -3,6 +3,8 @@ import { defineStore } from 'pinia';
 export const useAudioPlayerStore = defineStore("audioPlayer", {
     state: () => {
         return {
+            musicList: [],
+            musicListIdx: 0,
 
             audio: null,
             playing: false,
@@ -14,19 +16,28 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
     },
 
     actions: {
-        openTrack(music) {
+        openSingleMusic(music) {
+            this.musicList.length = 0;
+
+            this.musicList.push(music);
+
+            this.prepareTrackByIdx(0);
+
+            this.play();
+        },
+
+        prepareTrackByIdx(idx) {
+            this.musicListIdx = idx;
+
             if (this.playing) {
                 this.pauseTrack();
             }
 
-            this.audio = new Audio(music.audio);
+            this.audio = new Audio(this.musicList[this.musicListIdx].audio);
             this.audio.controls = true;
-
-            this.title = music.title;
-            this.coverUrl = (music.cover != null) ? music.cover : null;
         },
 
-        playTrack() {
+        play() {
             this.playing = true;
             this.audio.play();
         },

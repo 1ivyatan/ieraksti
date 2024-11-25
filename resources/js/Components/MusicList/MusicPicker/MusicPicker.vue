@@ -1,5 +1,6 @@
 <script setup>
-import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
+import ShowPlayButton from '@/Components/MusicPlayer/Components/PlayOneTrackButton.vue';
+import Cover from "@/Components/Music/Cover/Cover.vue";
 
 import { Link } from '@inertiajs/vue3';
 import { onMounted, reactive } from 'vue';
@@ -46,7 +47,14 @@ onMounted(() => {
                 :href="route('content.music.show', {
                     id: item.id
                 })"
+
+                class="inline"
             >
+                <Cover 
+                    :src="item.cover"
+                    class="h-8 w-auto"    
+                />
+
                 {{ item.title }}
             </Link>
 
