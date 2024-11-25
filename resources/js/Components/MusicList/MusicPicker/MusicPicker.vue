@@ -1,4 +1,6 @@
 <script setup>
+import ShowPlayButton from '@/Components/MusicPlayer/Components/ShowPlayButton.vue';
+
 import { Link } from '@inertiajs/vue3';
 import { onMounted, reactive } from 'vue';
 import axios from "axios";
@@ -33,19 +35,22 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-for="item in list.items">
-        {{ item }}
-        <!--<Link getMusicInfo(
-            :href="route('content.music.show', {
-                id: item.music_id
-            })"
+    <div
+        class="flex flex-col"
+    >
+        <div 
+            v-for="item in list.items"
+            class="flex w-full gap-8"
         >
-            <h2>
+            <Link
+                :href="route('content.music.show', {
+                    id: item.id
+                })"
+            >
                 {{ item.title }}
-            </h2>
-        </Link>-->
+            </Link>
+
+            <ShowPlayButton :music="item"/>
+        </div>
     </div>
-
-
-    {{ props.trackListItems }}
 </template>
