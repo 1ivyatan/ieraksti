@@ -43,7 +43,7 @@ class MusicController extends Controller
         return $track;
     }
 
-    public function retrieve(Request $request, String $id)
+    public function get(Request $request, String $id)
     {
         $track = $this->findAndCoatIt($id);
 

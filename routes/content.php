@@ -9,34 +9,33 @@ use App\Http\Controllers\Content\Music\MusicAudioController;
 use App\Http\Controllers\Content\MusicList\MusicListController;
 use App\Http\Controllers\Content\MusicList\MusicListTracks\MusicListTrackController;
 
-Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
-Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
-Route::get("track-retrieve/{id}", [MusicController::class, "retrieve"])->name('content.music.retrieve');
-
-Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
-
-Route::middleware(["auth", "privileged"])->group(function () {
+/* everyone */
     /* music */
-    Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');
-    Route::post("/upload", [MusicController::class, "store"])->name('content.music.upload');
+    Route::get("/music", [MusicController::class, "index"])->name('content.music.index');
+    Route::get("/music/{id}", [MusicController::class, "show"])->name('content.music.show');
+    Route::get("music.get/{id}", [MusicController::class, "get"])->name('content.music.retrieve');
 
-    Route::delete("/track/{id}", [MusicController::class, "destroy"])->name('content.music.destroy');
-    Route::get("/track/{id}/edit", [MusicController::class, "edit"])->name('content.music.edit');
-    Route::put("track-info-update/{id}", [MusicInfoController::class, "update"])->name('content.music.info.update');
-    
-    Route::post("track-cover-update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
-    Route::post("track-audio-update/{id}", [MusicAudioController::class, "update"])->name("content.music.audio.update");
-    Route::delete("track-cover-destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
+    /* musiclist */
+    Route::get("/musiclists", [MusicListController::class, "index"])->name('content.musiclist.index');
+    Route::get("/musiclists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 
-    /* playlists */
-    Route::get("/lists", [MusicListController::class, "index"])->name('content.musiclist.index');
-    Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
+Route::middleware(["auth", "privileged"])->group(
+    function() {
+        /* music */
+        Route::get("/upload", [MusicController::class, "create"])->name('content.music.create');
+        Route::post("/upload", [MusicController::class, "store"])->name('content.music.upload');
+        Route::delete("/music/{id}", [MusicController::class, "destroy"])->name('content.music.destroy');
+        Route::put("/music/{id}", [MusicInfoController::class, "update"])->name('content.music.info.update');
+        Route::get("music.info.update/{id}", [MusicController::class, "edit"])->name('content.music.edit');
+        Route::post("music.cover.update/{id}", [MusicCoverController::class, "update"])->name("content.music.cover.update");
+        Route::delete("music.cover.destroy/{id}", [MusicCoverController::class, "destroy"])->name("content.music.cover.destroy");
+        Route::post("music.audio.update/{id}", [MusicAudioController::class, "update"])->name("content.music.audio.update");
 
-    Route::get("/lists/create", [MusicListController::class, "create"])->name('content.musiclist.create');
-    Route::post("/lists/create", [MusicListController::class, "store"])->name('content.musiclist.upload');
-    Route::get("/lists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
-    
-    
+        /* musiclist */
+        Route::get("/createlist", [MusicListController::class, "create"])->name('content.musiclist.create');
+        Route::post("/createlist", [MusicListController::class, "store"])->name('content.musiclist.upload');
+        Route::get("/musiclists/{id}/edit", [MusicListController::class, "edit"])->name('content.musiclist.edit');
 
-    Route::post("track-list-store/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.tracks.add');
-});
+        Route::post("musiclist.listtracks.store/{playlistid}/{trackid}", [MusicListTrackController::class, "store"])->name('content.musiclist.music.add');
+    }
+);
