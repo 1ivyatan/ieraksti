@@ -27,14 +27,8 @@ class MusicController extends Controller
         return $track;
     }
 
-    public function find(String $id) {
-        $track = Music::findOrFail($id);
-
-        return $track;
-    }
-
     public function findAndCoatIt(String $id) {
-        $track = $this->find($id);
+        $track = Music::findOrFail($id);
 
         $track = $this->setCover($track);
 

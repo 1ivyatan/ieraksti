@@ -10,12 +10,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Music;
 
 class MusicCoverController extends Controller
 {
     public function update(MusicCoverUpdateRequest $request, String $id): RedirectResponse
     {
-        $track = MusicController::find($id);
+        $track = Music::findOrFail($id);
         $validated = $request->validated();
 
         if ($track->cover && Storage::exists($track->cover)) {
