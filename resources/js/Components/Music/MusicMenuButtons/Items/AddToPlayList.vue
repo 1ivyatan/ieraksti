@@ -33,7 +33,7 @@ const showMessageBox = (toggle) => {
 const addToPlaylist = (id) => {
     showMessageBox(false);
 
-    axios.post(route('content.musiclist.tracks.add', {
+    axios.post(route('content.musiclist.music.add', {
         playlistid: id,
         trackid: props.id
     }))
