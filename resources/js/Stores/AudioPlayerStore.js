@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 
-
 export const useAudioPlayerStore = defineStore("audioPlayer", {
     state: () => {
         return {
