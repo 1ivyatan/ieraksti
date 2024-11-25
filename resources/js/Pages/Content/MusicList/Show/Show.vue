@@ -1,6 +1,6 @@
 <script setup>
 import WithSidebarSearchLayout from '@/Layouts/WithSidebarSearchLayout.vue';
-import MusicPicker from "@/Components/Music/MusicPicker/MusicPicker.vue";
+import MusicPicker from "@/Components/MusicList/MusicPicker/MusicPicker.vue";
 
 //import HorizMusicCard from '@/Components/Music/HorizMusicCard.vue';
 //import DeleteMusicForm from '@/Pages/Content/Music/Destroy/DeleteMusicForm.vue';

@@ -11,6 +11,8 @@ use App\Http\Controllers\Content\MusicList\MusicListTracks\MusicListTrackControl
 
 Route::get("/tracks", [MusicController::class, "index"])->name('content.music.index');
 Route::get("/track/{id}", [MusicController::class, "show"])->name('content.music.show');
+Route::get("track-retrieve/{id}", [MusicController::class, "retrieve"])->name('content.music.retrieve');
+
 Route::get("/lists/{id}", [MusicListController::class, "show"])->name('content.musiclist.show');
 
 Route::middleware(["auth", "privileged"])->group(function () {
