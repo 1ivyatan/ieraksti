@@ -20,8 +20,6 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             });
 
             this.prepareTrackByIdx(idx);
-
-            this.play();
         },
 
         openSingleMusic(music) {
@@ -30,19 +28,19 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             this.musicList.push(music);
 
             this.prepareTrackByIdx(0);
-
-            this.play();
         },
 
         prepareTrackByIdx(idx) {
             this.musicListIdx = idx;
 
             if (this.playing) {
-                this.pauseTrack();
+                this.pause();
             }
 
             this.audio = new Audio(this.musicList[this.musicListIdx].audio);
             this.audio.controls = true;
+
+            this.play();
         },
 
         play() {
@@ -61,6 +59,17 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             } else {
                 this.play();
             }
+        },
+
+        prev() {
+            let newidx
+                = (this.musicListIdx - 1 >= 0)
+                    ? this.musicListIdx - 1
+                    : this.musicList.length - 1
+            ;
+            
+            this.prepareTrackByIdx(newidx);
+
         }
     }
 });
