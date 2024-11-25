@@ -26,6 +26,7 @@ onMounted(() => {
             
             <button @click="audioPlayer.prev()">&lt;</button>
             <button @click="audioPlayer.toggleTrack()">Toggle</button>
+            <button @click="audioPlayer.next()">&gt;</button>
         </div>
     </div>
 </template>

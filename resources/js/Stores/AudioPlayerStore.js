@@ -69,7 +69,16 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             ;
             
             this.prepareTrackByIdx(newidx);
+        },
 
+        next() {
+            let newidx
+                = (this.musicListIdx + 1 < this.musicList.length)
+                    ? this.musicListIdx + 1
+                    : 0
+            ;
+            
+            this.prepareTrackByIdx(newidx);
         }
     }
 });
