@@ -50,21 +50,16 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             this.audio.play();
         },
 
-        pauseTrack() {
+        pause() {
             this.playing = false;
             this.audio.pause();
         },
 
-        openAndPlay(music) {
-            this.openTrack(music);
-            this.playTrack();
-        },
-
         toggleTrack() {
             if (this.playing) {
-                this.pauseTrack();
+                this.pause();
             } else {
-                this.playTrack();
+                this.play();
             }
         }
     }
