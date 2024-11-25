@@ -1,5 +1,5 @@
 <script setup>
-import ShowPlayButton from '@/Components/MusicPlayer/Components/PlayOneTrackButton.vue';
+import PlayListButton from '@/Components/MusicPlayer/Components/PlayListButton.vue';
 import Cover from "@/Components/Music/Cover/Cover.vue";
 
 import { Link } from '@inertiajs/vue3';
@@ -40,7 +40,7 @@ onMounted(() => {
         class="flex flex-col"
     >
         <div 
-            v-for="item in list.items"
+            v-for="(item, index) in list.items"
             class="flex w-full gap-8"
         >
             <Link
@@ -58,7 +58,7 @@ onMounted(() => {
                 {{ item.title }}
             </Link>
 
-            <ShowPlayButton :music="item"/>
+            <PlayListButton :musicList="list.items" :idx="index"/>
         </div>
     </div>
 </template>

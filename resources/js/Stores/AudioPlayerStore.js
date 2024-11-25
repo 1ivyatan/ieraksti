@@ -7,15 +7,23 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             musicListIdx: 0,
 
             audio: null,
-            playing: false,
-
-            /* metadata */
-            title: "",
-            coverUrl: null,
+            playing: false
         }
     },
 
     actions: {
+        openMusicList(musicList, idx) {
+            this.musicList.length = 0;
+
+            musicList.forEach(element => {
+                this.musicList.push(element);
+            });
+
+            this.prepareTrackByIdx(idx);
+
+            this.play();
+        },
+
         openSingleMusic(music) {
             this.musicList.length = 0;
 

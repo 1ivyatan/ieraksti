@@ -1,13 +1,17 @@
 <script setup>
-import {ref, watch, onMounted} from 'vue';
+import {ref, watch, onMounted, reactive} from 'vue';
 import { useAudioPlayerStore } from '@/Stores/AudioPlayerStore'
 
 const audioPlayer = useAudioPlayerStore();
-const playerBarPresent = ref(true);
 
 onMounted(() => {
     
 });
+
+//
+//const musicInfo = reactive({
+    //title: audioPlayer.musicList[audioPlayer.musicListIdx].title
+//});
 
 </script>
 
@@ -19,9 +23,6 @@ onMounted(() => {
         <div
             class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-            <h3>
-                {{ audioPlayer.title }}
-            </h3>
             
             <button @click="audioPlayer.toggleTrack()">Toggle</button>
         </div>

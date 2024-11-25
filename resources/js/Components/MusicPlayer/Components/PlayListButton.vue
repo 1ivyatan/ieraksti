@@ -1,19 +1,21 @@
 <script setup>
-import AudioPlayerBar from '@/Components/MusicPlayer/AudioPlayerBar.vue';
 import { useAudioPlayerStore } from '@/Stores/AudioPlayerStore'
 
 const audioPlayer = useAudioPlayerStore();
 
 const props = defineProps({
-    music: {
+    musicList: {
         type: Object,
         required: true
-    }
+    },
+    idx: {
+        type: Number,
+        required: true
+    },
 });
 
 const playAudio = () => {
-    //AudioPlayerBar.startPlayer();
-    audioPlayer.openAndPlay(props.music);
+    audioPlayer.openMusicList(props.musicList, props.idx);
 }
 
 </script>
