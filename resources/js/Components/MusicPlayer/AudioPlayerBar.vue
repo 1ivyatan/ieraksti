@@ -16,27 +16,33 @@ const updateTiming = (data) => {
     audioDurationCurrent.value = data.target.currentTime;
 }
 
+
 const preparePlayer = (delay) => {
 
-    if (delay) {
-        setTimeout(() => {
-            audioDuration.value = audioPlayer.audio.duration;
-        }, 250);    
-    } else {
+    setTimeout(() => {
         audioDuration.value = audioPlayer.audio.duration;
-    }
-    
-    audioPlayer.audio.addEventListener("timeupdate", 
+
+        audioPlayer.audio.addEventListener("timeupdate", 
         (value) => {
             updateTiming(value);
         }
-    );
+        );
+    
+        audioPlayer.audio.addEventListener("seeked", 
+        (value) => {
+            console.log("seeked");
+            //if (audioPlayer.audio.autoturn) {
+            //    audioPlayer.audio.next();
+           // }
+        }
+        );
+    }, delay);  
 };
 
 /* events */
 onMounted(() => {
     if (audioPlayer.audio) {
-        preparePlayer();
+        preparePlayer(0);
     }
 });
 

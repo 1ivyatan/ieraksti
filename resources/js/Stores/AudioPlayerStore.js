@@ -46,6 +46,7 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             }
 
             this.audio = new Audio(this.musicList[this.musicListIdx].audio);
+            this.audio.controls = true;
 
             this.play();
         },
