@@ -7,17 +7,24 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             musicListIdx: 0,
 
             audio: null,
-            playing: false
+            playing: false,
+            autoturn: true
         }
     },
 
     actions: {
+        setAutoturn(toggle) {
+            this.autoturn = toggle
+        },
+
         openMusicList(musicList, idx) {
             this.musicList.length = 0;
 
             musicList.forEach(element => {
                 this.musicList.push(element);
             });
+
+            this.autoturn = false;
 
             this.prepareTrackByIdx(idx);
         },
@@ -26,6 +33,7 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             this.musicList.length = 0;
 
             this.musicList.push(music);
+            this.autoturn = true;
 
             this.prepareTrackByIdx(0);
         },
@@ -38,7 +46,6 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
             }
 
             this.audio = new Audio(this.musicList[this.musicListIdx].audio);
-            this.audio.controls = true;
 
             this.play();
         },

@@ -2,16 +2,48 @@
 import {ref, watch, onMounted, reactive} from 'vue';
 import { useAudioPlayerStore } from '@/Stores/AudioPlayerStore'
 
+/* store and tracking */
 const audioPlayer = useAudioPlayerStore();
+const audioDuration = ref(0.0);
+const audioDurationCurrent = ref(
+    (audioPlayer.audio)
+        ? audioPlayer.audio.duration
+        : 0.0
+);
 
-onMounted(() => {
+/* player procedures */
+const updateTiming = (data) => {
+    audioDurationCurrent.value = data.target.currentTime;
+}
+
+const preparePlayer = (delay) => {
+
+    if (delay) {
+        setTimeout(() => {
+            audioDuration.value = audioPlayer.audio.duration;
+        }, 250);    
+    } else {
+        audioDuration.value = audioPlayer.audio.duration;
+    }
     
+    audioPlayer.audio.addEventListener("timeupdate", 
+        (value) => {
+            updateTiming(value);
+        }
+    );
+};
+
+/* events */
+onMounted(() => {
+    if (audioPlayer.audio) {
+        preparePlayer();
+    }
 });
 
-//
-//const musicInfo = reactive({
-    //title: audioPlayer.musicList[audioPlayer.musicListIdx].title
-//});
+watch(() => audioPlayer.audio, () => {
+    preparePlayer(250);
+});
+
 
 </script>
 
@@ -27,6 +59,14 @@ onMounted(() => {
             <button @click="audioPlayer.prev()">&lt;</button>
             <button @click="audioPlayer.toggleTrack()">Toggle</button>
             <button @click="audioPlayer.next()">&gt;</button>
+
+            <input 
+                type="range"
+                id=""
+                :max="audioDuration"
+                :value="audioDurationCurrent"
+                min="0"
+            >
         </div>
     </div>
 </template>
