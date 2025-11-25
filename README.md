@@ -4,7 +4,9 @@ Mūzikas atskaņotājs un etiķešu atzīmēta mūzikas bibiotēka tīmekļvietn
 # Setup
 * Programmatūra: PHP, Laravel, MySQL, npm
 * Klonē šo repozitoriju
+* Iestati konfigurāciju ar `.env.example`
 * Palaid
-    *  `npm install`
     *  `php artisan migrate`
+    *  `npm install`
+    *  `npm build`
     *  `npm run dev`
